@@ -23,8 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('launchApplication',()=>
+{
+    cy.visit('https://www.saucedemo.com/') 
 
-//Launch Swag labs application 
-Cypress.Commands.add('launchBrowser', () => { 
-    cy.visit('https://www.saucedemo.com/')
 })
+// Cypress.Commands.overwrite('log', (subject, message) => cy.task('log', message));
