@@ -1,0 +1,91 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-02-17T08:27:59.001Z",
+    "end": "2023-02-17T08:27:59.628Z",
+    "duration": 627,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5b37265f-d895-4e53-a22e-df35af2f79ca",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "file": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "An uncaught error was detected outside of a test",
+          "fullTitle": "An uncaught error was detected outside of a test",
+          "timedOut": null,
+          "duration": 500,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": null,
+          "code": "throw err;",
+          "err": {
+            "message": "TypeError: The following error originated from your test code, not from Cypress.\n\n  > _CheckoutOverviewPage.default is not a constructor\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n\nCypress could not associate this error to any specific test.\n\nWe dynamically generated a new test to display this failure.",
+            "estack": "TypeError: The following error originated from your test code, not from Cypress.\n\n  > _CheckoutOverviewPage.default is not a constructor\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n\nCypress could not associate this error to any specific test.\n\nWe dynamically generated a new test to display this failure.\n    at Suite.eval (webpack:///./cypress/e2e/VerifyCheckoutOverview.cy.js:12:13)\n    at ./cypress/e2e/VerifyCheckoutOverview.cy.js (webpack:///./cypress/e2e/VerifyCheckoutOverview.cy.js:6:0)\n    at __webpack_require__ (webpack:///webpack/bootstrap:19:0)\n    at 0 (http://localhost:53514/__cypress/tests?p=cypress\\e2e\\VerifyCheckoutOverview.cy.js:394:18)\n    at __webpack_require__ (webpack:///webpack/bootstrap:19:0)\n    at eval (webpack:///webpack/bootstrap:83:0)\n    at eval (http://localhost:53514/__cypress/tests?p=cypress\\e2e\\VerifyCheckoutOverview.cy.js:87:10)\n    at eval (<anonymous>)",
+            "diff": null
+          },
+          "uuid": "a37736fd-eedb-4910-97e1-f82dcb847e29",
+          "parentUUID": "5b37265f-d895-4e53-a22e-df35af2f79ca",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [],
+      "failures": [
+        "a37736fd-eedb-4910-97e1-f82dcb847e29"
+      ],
+      "pending": [],
+      "skipped": [],
+      "duration": 500,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

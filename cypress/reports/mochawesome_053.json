@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-17T08:43:44.808Z",
+    "end": "2023-02-17T08:44:32.091Z",
+    "duration": 47283,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "24ad225e-c14f-4a3c-9f9e-a346528fe0c1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyCart.cy.js",
+      "file": "cypress\\e2e\\VerifyCart.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "89e957b7-c96c-4f0b-88b2-faa798b21af4",
+          "title": "Test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "VerifyCart",
+              "fullTitle": "Test suite VerifyCart",
+              "timedOut": null,
+              "duration": 44914,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "hp.login(this.data.userName, this.data.password);\nhpp.addTwoProducts();\ncp.getCart().click();\ncp.clickCheckOut().click();",
+              "err": {},
+              "uuid": "6c9be896-a41d-43fa-839f-cc6b0877aa3c",
+              "parentUUID": "89e957b7-c96c-4f0b-88b2-faa798b21af4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6c9be896-a41d-43fa-839f-cc6b0877aa3c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 44914,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

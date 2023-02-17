@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-02-17T05:07:35.700Z",
+    "end": "2023-02-17T05:07:46.094Z",
+    "duration": 10394,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b5fda126-8801-4515-87d5-a9bb35d4ed32",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "file": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "33460090-9e08-4670-a087-9c8f55b4fa73",
+          "title": "Test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "VerifyUserInformation",
+              "fullTitle": "Test suite VerifyUserInformation",
+              "timedOut": null,
+              "duration": 7591,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "hp.login(this.data.userName, this.data.password);\nhpp.addTwoProducts();\ncp.getCart().click();\ncp.clickCheckOut().click();\nup.enterFirstname().type(this.data1.Firstname);\nup.enterLastname().type(this.data1.Latname);\nup.enterZip().type(this.data1.Zip);\nup.clickContinue().click();\nco.getQuantity(this.data3.Qty);\n// co.getPrice(this.data4.price)\n// co.getTotal().should('be.visible')\nco.getTotal();\nco.clickFinish().click();\nco.verifyCheckoutcomplte().should('have.text', 'THANK YOU FOR YOUR ORDER');\n// co.getQuantity(this.data3.Qty)\n//    const N1= co.getName.type(this.data2[0].Name)\n//     const Q1=co.getQty.type(this.data2[0].Qty)\n//     const Pr=co.getPrice.type(this.data2[0].Price)",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.inventory_item_price`, but never found it. Queried from:\n\n              > cy.get(.inventory_item_price)",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.inventory_item_price`, but never found it. Queried from:\n\n              > cy.get(.inventory_item_price)\n    at CheckoutOverviewPage.getTotal (webpack:///./cypress/Pages/CheckoutOverviewPage.js:32:40)\n    at Context.eval (webpack:///./cypress/e2e/VerifyCheckoutOverview.cy.js:52:15)",
+                "diff": null
+              },
+              "uuid": "c3039dc1-bce7-4ebe-9df9-a3946f61ec45",
+              "parentUUID": "33460090-9e08-4670-a087-9c8f55b4fa73",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c3039dc1-bce7-4ebe-9df9-a3946f61ec45"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7591,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

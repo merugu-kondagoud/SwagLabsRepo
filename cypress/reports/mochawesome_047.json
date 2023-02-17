@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-02-17T08:26:16.048Z",
+    "end": "2023-02-17T08:26:20.188Z",
+    "duration": 4140,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5d569a95-1b7e-4f08-b05e-5de6fe2fd0a3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "file": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3890500d-5b18-4b4f-84fb-99783d85383e",
+          "title": "Test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "VerifyUserInformation",
+              "fullTitle": "Test suite VerifyUserInformation",
+              "timedOut": null,
+              "duration": 1502,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "hp.login(this.data.userName, this.data.password);\nhpp.addTwoProducts();\ncp.getCart().click();\ncp.clickCheckOut().click();\nup.enterFirstname().type(this.data1.Firstname);\nup.enterLastname().type(this.data1.Latname);\nup.enterZip().type(this.data1.Zip);\nup.clickContinue().click();\nco.getQuantity(this.data3.Qty);\n// co.getPrice(this.data4.price)\n// co.getTotal().should('be.visible')\nconst totalPrice = co.getTotal();\nconsole.log(\"Totalprice*********\" + totalPrice);\nco.clickFinish().click();\nco.verifyCheckoutcomplte().should('have.text', 'THANK YOU FOR YOUR ORDER');\n// co.getQuantity(this.data3.Qty)\n//    const N1= co.getName.type(this.data2[0].Name)\n//     const Q1=co.getQty.type(this.data2[0].Qty)\n//     const Pr=co.getPrice.type(this.data2[0].Price)",
+              "err": {
+                "message": "AssertionError: Actual and expected values are not matched: expected 0 to equal 39.98",
+                "estack": "AssertionError: Actual and expected values are not matched: expected 0 to equal 39.98\n    at CheckoutOverviewPage.getTotal (webpack:///./cypress/Pages/CheckoutOverviewPage.js:65:15)\n    at Context.eval (webpack:///./cypress/e2e/VerifyCheckoutOverview.cy.js:52:34)",
+                "diff": null
+              },
+              "uuid": "4caedab2-034a-40cf-9637-ce42f9bc83cd",
+              "parentUUID": "3890500d-5b18-4b4f-84fb-99783d85383e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "4caedab2-034a-40cf-9637-ce42f9bc83cd"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1502,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

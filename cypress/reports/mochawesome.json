@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-16T14:53:50.328Z",
+    "end": "2023-02-16T14:53:55.144Z",
+    "duration": 4816,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "bcf0fdca-6da3-4bf1-be41-26eb6fa51005",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyLogin.cy.js",
+      "file": "cypress\\e2e\\VerifyLogin.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5b03d4ce-1fad-46bc-8b06-8fed14e1176f",
+          "title": "TestSuite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify Login",
+              "fullTitle": "TestSuite Verify Login",
+              "timedOut": null,
+              "duration": 1568,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const hp = new _LoginPage.default();\nhp.login(this.data.userName, this.data.password);",
+              "err": {},
+              "uuid": "7b6a33ce-e8d5-4542-95bf-315441dcac0f",
+              "parentUUID": "5b03d4ce-1fad-46bc-8b06-8fed14e1176f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7b6a33ce-e8d5-4542-95bf-315441dcac0f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1568,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

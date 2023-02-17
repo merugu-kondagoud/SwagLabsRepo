@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-17T08:37:49.916Z",
+    "end": "2023-02-17T08:37:55.942Z",
+    "duration": 6026,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cb5f4514-d490-4c31-af7a-1854b353499b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "file": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8af15691-c7f3-4b33-83b2-3e0883147201",
+          "title": "Test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "VerifyUserInformation",
+              "fullTitle": "Test suite VerifyUserInformation",
+              "timedOut": null,
+              "duration": 3829,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "hp.login(this.data.userName, this.data.password);\nhpp.addTwoProducts();\ncp.getCart().click();\ncp.clickCheckOut().click();\nup.enterFirstname().type(this.data1.Firstname);\nup.enterLastname().type(this.data1.Latname);\nup.enterZip().type(this.data1.Zip);\nup.clickContinue().click();\nco.getQuantity(this.data3.Qty);\n// co.getPrice(this.data4.price)\n// co.getTotal().should('be.visible')\nco.getTotal();\nco.clickFinish().click();\nco.verifyCheckoutcomplte().should('have.text', 'THANK YOU FOR YOUR ORDER');\n// co.getQuantity(this.data3.Qty)\n//    const N1= co.getName.type(this.data2[0].Name)\n//     const Q1=co.getQty.type(this.data2[0].Qty)\n//     const Pr=co.getPrice.type(this.data2[0].Price)",
+              "err": {},
+              "uuid": "3595d933-b236-4ad4-a0cd-9218a5f0ac92",
+              "parentUUID": "8af15691-c7f3-4b33-83b2-3e0883147201",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3595d933-b236-4ad4-a0cd-9218a5f0ac92"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3829,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

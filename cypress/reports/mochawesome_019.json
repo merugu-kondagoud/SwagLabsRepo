@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-02-17T05:29:41.030Z",
+    "end": "2023-02-17T05:29:47.092Z",
+    "duration": 6062,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0790db8f-eb46-47dc-bfb8-58ed978beadc",
+      "title": "",
+      "fullFile": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "file": "cypress\\e2e\\VerifyCheckoutOverview.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1f62b461-3c58-405d-8c68-634ed312f645",
+          "title": "Test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "VerifyUserInformation",
+              "fullTitle": "Test suite VerifyUserInformation",
+              "timedOut": null,
+              "duration": 3681,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "hp.login(this.data.userName, this.data.password);\nhpp.addTwoProducts();\ncp.getCart().click();\ncp.clickCheckOut().click();\nup.enterFirstname().type(this.data1.Firstname);\nup.enterLastname().type(this.data1.Latname);\nup.enterZip().type(this.data1.Zip);\nup.clickContinue().click();\nco.getQuantity(this.data3.Qty);\n// co.getPrice(this.data4.price)\n// co.getTotal().should('be.visible')\nco.getTotal();\nco.clickFinish().click();\nco.verifyCheckoutcomplte().should('have.text', 'THANK YOU FOR YOUR ORDER');\n// co.getQuantity(this.data3.Qty)\n//    const N1= co.getName.type(this.data2[0].Name)\n//     const Q1=co.getQty.type(this.data2[0].Qty)\n//     const Pr=co.getPrice.type(this.data2[0].Price)",
+              "err": {
+                "message": "ReferenceError: splitText is not defined",
+                "estack": "ReferenceError: splitText is not defined\n    at Context.eval (webpack:///./cypress/Pages/CheckoutOverviewPage.js:36:26)",
+                "diff": null
+              },
+              "uuid": "8fde61be-d1ec-4e59-9853-da2756671b8c",
+              "parentUUID": "1f62b461-3c58-405d-8c68-634ed312f645",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8fde61be-d1ec-4e59-9853-da2756671b8c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3681,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
