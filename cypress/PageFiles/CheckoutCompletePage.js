@@ -9,7 +9,7 @@ class CheckoutCompletePage {
     }
 
     getBackToHomeButton() {
-        return cy.contains("Back Home")
+        return cy.contains("Back Home").click()
     }
 }
 export default CheckoutCompletePage

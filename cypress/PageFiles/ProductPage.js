@@ -6,7 +6,7 @@ class ProductPage {
         return cy.get(".inventory_list")
     }
     getAddToCartButton() {
-        return cy.get(".shopping_cart_link")
+        return cy.get(".shopping_cart_link").click()
     }
     
 }

@@ -3,7 +3,7 @@ class CheckoutOverviewPage {
         return cy.contains("Checkout: Overview")
     }
     getFinishButton() {
-        return cy.contains("Finish")
+        return cy.contains("Finish").click()
     }
     getCartItemQuantity() {
         return cy.get(".cart_quantity")

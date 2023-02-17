@@ -31,10 +31,10 @@ describe('My SwagLab Test', function () {
 
 
     before(function () {
-        cy.LaunchApplication()
+        cy.launchApplication()
     })
 
-    it('Verify checkout details are correct!', function () {
+    it('Verify checkout details are correct', function () {
         loginPage.login(this.loginData.username, this.loginData.password)
         productPage.getPageTitle().should("have.text", this.productData.productPageText)
         productPage.getProducts().each(($el, index, $list) => {
@@ -43,21 +43,21 @@ describe('My SwagLab Test', function () {
                 index++
             }
         })
-        productPage.getAddToCartButton().click()
+        productPage.getAddToCartButton()
         cartPage.getPageTitle().should("have.text", this.cartData.cartPageText)
         cartPage.getListOfProductsAdded().should("have.text", this.cartData.listOfProductsAdded)
-        cartPage.getCheckoutButton().click()
+        cartPage.getCheckoutButton()
         checkoutPage.getPageTitle().should("have.text", this.checkoutData.checkoutPageText)
         checkoutPage.getFirstNameTextBox().type(this.checkoutData.firstname)
         checkoutPage.getLastNameTextBox().type(this.checkoutData.lastname)
         checkoutPage.getPostalCodeTextBox().type(this.checkoutData.postalcode)
-        checkoutPage.getContinueButton().click()
+        checkoutPage.getContinueButton()
         checkoutOverviewPage.getPageTitle().should("have.text", this.checkoutOverviewData.checkoutOverviewPageText)
 
     })
 
     after(function () {
-        cy.LogoutFromApplication()
+        cy.logoutFromApplication()
         loginPage.getLoginButton().should("have.value", "Login")
     })
 })

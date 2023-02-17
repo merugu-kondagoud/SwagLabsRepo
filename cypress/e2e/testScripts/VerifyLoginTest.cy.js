@@ -15,17 +15,17 @@ describe('My SwagLab Test Suite', function () {
   const productPage = new ProductPage()
 
   before(function () {
-    cy.LaunchApplication()
+    cy.launchApplication()
   })
 
-  it('Verify Saucedemo.com login is successful!', function () {
+  it('Verify Saucedemo.com login is successful', function () {
 
     loginPage.login(this.loginData.username, this.loginData.password)
     productPage.getPageTitle().should("have.text", this.productData.productPageText)
   })
 
   after(function () {
-    cy.LogoutFromApplication()
+    cy.logoutFromApplication()
     loginPage.getLoginButton().should("have.value", "Login")
   })
 })

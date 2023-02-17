@@ -35,10 +35,10 @@ describe('My SwagLab Test', function () {
     const checkoutCompletePage = new CheckoutCompletePage()
 
     before(function () {
-        cy.LaunchApplication()
+        cy.launchApplication()
     })
 
-    it('Verify Checkout is done Successfully!', function () {
+    it('Verify Checkout is done Successfully', function () {
 
         loginPage.login(this.loginData.username, this.loginData.password)
         productPage.getPageTitle().should("have.text", this.productData.productPageText)
@@ -48,15 +48,15 @@ describe('My SwagLab Test', function () {
                 index++
             }
         })
-        productPage.getAddToCartButton().click()
+        productPage.getAddToCartButton()
         cartPage.getPageTitle().should("have.text", this.cartData.cartPageText)
         cartPage.getListOfProductsAdded().should("have.text", this.cartData.listOfProductsAdded)
-        cartPage.getCheckoutButton().click()
+        cartPage.getCheckoutButton()
         checkoutPage.getPageTitle().should("have.text", this.checkoutData.checkoutPageText)
         checkoutPage.getFirstNameTextBox().type(this.checkoutData.firstname)
         checkoutPage.getLastNameTextBox().type(this.checkoutData.lastname)
         checkoutPage.getPostalCodeTextBox().type(this.checkoutData.postalcode)
-        checkoutPage.getContinueButton().click()
+        checkoutPage.getContinueButton()
         checkoutOverviewPage.getPageTitle().should("have.text", this.checkoutOverviewData.checkoutOverviewPageText)
         checkoutOverviewPage.getCartItemQuantity().each(($el, index, $list) => {
             if (index == 0) {
@@ -103,15 +103,15 @@ describe('My SwagLab Test', function () {
 
         })
 
-        checkoutOverviewPage.getFinishButton().click()
+        checkoutOverviewPage.getFinishButton()
         checkoutCompletePage.getPageTitle().should("have.text", this.checkoutCompleteData.checkoutCompletePageText)
         checkoutCompletePage.getThankyouTextMessage().should("have.text", this.checkoutCompleteData.thankyouMessage)
-        checkoutCompletePage.getBackToHomeButton().click()
+        checkoutCompletePage.getBackToHomeButton()
         productPage.getPageTitle().should("have.text", this.productData.productPageText)
     })
 
     after(function () {
-        cy.LogoutFromApplication()
+        cy.logoutFromApplication()
         loginPage.getLoginButton().should("have.value", "Login")
     })
 })

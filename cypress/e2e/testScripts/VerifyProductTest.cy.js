@@ -20,10 +20,10 @@ describe('My SwagLab Test', function () {
   const cartPage = new CartPage()
 
   before(function () {
-    cy.LaunchApplication()
+    cy.launchApplication()
   })
 
-  it('Add products to cart!', function () {
+  it('Add products to cart', function () {
 
     loginPage.login(this.loginData.username, this.loginData.password)
     productPage.getPageTitle().should("have.text", this.productData.productPageText)
@@ -33,13 +33,13 @@ describe('My SwagLab Test', function () {
         index++
       }
     })
-    productPage.getAddToCartButton().click()
+    productPage.getAddToCartButton()
     cartPage.getPageTitle().should("have.text", this.cartData.cartPageText)
 
   })
 
   after(function () {
-    cy.LogoutFromApplication()
+    cy.logoutFromApplication()
     loginPage.getLoginButton().should("have.value", "Login")
   })
 })

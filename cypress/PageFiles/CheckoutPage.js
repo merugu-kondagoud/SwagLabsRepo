@@ -12,7 +12,7 @@ class CheckoutPage {
         return cy.get("#postal-code")
     }
     getContinueButton() {
-        return cy.contains("Continue")
+        return cy.contains("Continue").click()
     }
 }
 export default CheckoutPage
