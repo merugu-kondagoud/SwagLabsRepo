@@ -24,7 +24,39 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-//Launch Swag labs application 
-Cypress.Commands.add('launchBrowser', () => { 
-    cy.visit('https://www.saucedemo.com/')
+import { CartPage } from "../pages/CartPage"
+import { BackToHomePage } from "../pages/BackToHomePage";
+
+
+const cartPage = new CartPage();
+const backToHome = new BackToHomePage();
+
+Cypress.Commands.add('launchBrowser', () => {
+    //cy.visit("https://www.saucedemo.com/")
+    cy.visit('https://www.saucedemo.com')
 })
+
+Cypress.Commands.add('validateYourCart', (productName) => {
+    cartPage.getCartLabel().each(($el, index, $list) => {
+        const textproduct = $el.find('.inventory_item_name').text()
+        //const textproduct = cartPage.getItemName().text()
+        if (textproduct.includes(productName)) {
+            expect(textproduct).to.be.equal(productName)
+        }
+    })
+})
+
+Cypress.Commands.add('logout', () => {
+    backToHome.getBurgerMenuButton().click({ force: true });
+    backToHome.getLogoutButton().click({ force: true });
+})
+
+
+
+
+
+
+
+
+
+
