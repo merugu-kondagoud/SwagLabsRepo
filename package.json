@@ -1,23 +1,19 @@
 {
-  "name": "swaglabsprojectsource",
+  "name": "saucelabsautomation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run",
+    "test1": "npm run test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/merugu-kondagoud/SwagLabsRepo.git"
-  },
-  "keywords": [],
-  "author": "",
+  "author": "subhashinibollineni",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/merugu-kondagoud/SwagLabsRepo/issues"
-  },
-  "homepage": "https://github.com/merugu-kondagoud/SwagLabsRepo#readme",
-  "devDependencies": {
+  "dependencies": {
     "cypress": "^12.5.1"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.3.0",
+    "cypress-xpath": "^2.0.1"
   }
 }

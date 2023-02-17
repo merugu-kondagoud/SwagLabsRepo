@@ -2,8 +2,8 @@
 
 describe('Test suite', () =>{
 
-it('Launch Swag Labs application', () =>{
-    cy.launchBrowser()
-})
-
-})
+    it('Launch Swag Labs application', () =>{
+        cy.launchBrowser()
+    })
+    
+    })
