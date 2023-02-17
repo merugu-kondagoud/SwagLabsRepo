@@ -24,10 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 /// <reference types="Cypress"/>
-//Launch Swag labs application 
-Cypress.Commands.add('launchBrowser', () => { 
-    cy.visit('https://www.saucedemo.com/')
-})
 //Launch Swag labs application
 Cypress.Commands.add('launchApplication', () => {
     cy.visit('https://www.saucedemo.com/')
