@@ -1,4 +1,9 @@
+///<reference types ="Cypress"/>
+
 describe('Test suite', () =>{
-it('Launch Swag Labs application')
-cypress.launchBrowser();
+
+it('Launch Swag Labs application', () =>{
+    cy.launchBrowser()
+})
+
 })

@@ -26,5 +26,5 @@
 
 //Launch Swag labs application 
 Cypress.Commands.add('launchBrowser', () => { 
-    cypress.visit('https://www.saucedemo.com/')
+    cy.visit('https://www.saucedemo.com/')
 })
