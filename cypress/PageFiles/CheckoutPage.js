@@ -1,18 +1,18 @@
-class CheckoutPage {
+class CheckOutPage {
     getPageTitle() {
         return cy.contains("Checkout: Your Information")
     }
-    getFirstNameTextBox() {
+    firstName() {
         return cy.get("#first-name")
     }
-    getLastNameTextBox() {
+    lastName() {
         return cy.get("#last-name")
     }
-    getPostalCodeTextBox() {
+    postalCode() {
         return cy.get("#postal-code")
     }
-    getContinueButton() {
+    continue() {
         return cy.contains("Continue").click()
     }
 }
-export default CheckoutPage
+export default CheckOutPage

@@ -2,10 +2,10 @@ class CartPage {
     getPageTitle() {
         return cy.contains("Your Cart")
     }
-    getCheckoutButton() {
+    checkout() {
         return cy.contains("Checkout").click()
     }
-    getListOfProductsAdded() {
+    listOfProductsAdded() {
         return cy.get(".shopping_cart_badge")
     }
 

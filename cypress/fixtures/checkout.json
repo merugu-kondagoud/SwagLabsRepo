@@ -1,6 +1,6 @@
 {
-  "checkoutPageText": "Checkout: Your Information",
-  "firstname": "standard_user",
-  "lastname": "secret_sauce",
-  "postalcode": "123456"
+  "checkOutPageText": "Checkout: Your Information",
+  "firstName": "standard_user",
+  "lastName": "secret_sauce",
+  "postalCode": "123456"
 }

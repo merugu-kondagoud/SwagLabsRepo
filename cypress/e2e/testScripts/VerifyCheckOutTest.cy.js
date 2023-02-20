@@ -1,63 +1,76 @@
 import LoginPage from "../../PageFiles/LoginPage"
 import ProductPage from "../../PageFiles/ProductPage"
 import CartPage from "../../PageFiles/CartPage"
-import CheckoutPage from "../../PageFiles/CheckoutPage"
-import CheckoutOverviewPage from "../../PageFiles/CheckoutOverviewPage"
+import CheckOutPage from "../../PageFiles/CheckOutPage"
+import CheckOutOverviewPage from "../../PageFiles/CheckOutOverviewPage"
+
+const loginPage = new LoginPage()
+const productPage = new ProductPage()
+const cartPage = new CartPage()
+const checkOutPage = new CheckOutPage()
+const checkOutOverviewPage = new CheckOutOverviewPage()
 
 describe('My SwagLab Test', function () {
     beforeEach(function () {
-        cy.fixture('login').then(function (loginData) {
-            this.loginData = loginData
+        cy.fixture('login').then(function (loginDetails) {
+            this.loginDetails = loginDetails
         })
-        cy.fixture('product').then(function (productData) {
-            this.productData = productData
+        cy.fixture('product').then(function (productDetails) {
+            this.productDetails = productDetails
         })
-        cy.fixture('cart').then(function (cartData) {
-            this.cartData = cartData
+        cy.fixture('cart').then(function (cartDetails) {
+            this.cartDetails = cartDetails
         })
-        cy.fixture('checkout').then(function (checkoutData) {
-            this.checkoutData = checkoutData
+        cy.fixture('checkout').then(function (checkOutDetails) {
+            this.checkOutDetails = checkOutDetails
         })
-        cy.fixture('checkoutOverview').then(function (checkoutOverviewData) {
-            this.checkoutOverviewData = checkoutOverviewData
+        cy.fixture('checkoutoverview').then(function (checkOutOverviewDetails) {
+            this.checkOutOverviewDetails = checkOutOverviewDetails
         })
     })
 
-    const loginPage = new LoginPage()
-    const productPage = new ProductPage()
-    const cartPage = new CartPage()
-    const checkoutPage = new CheckoutPage()
-    const checkoutOverviewPage = new CheckoutOverviewPage()
-
-
     before(function () {
+        cy.log("Launching Sauce demo.com")
         cy.launchApplication()
     })
 
     it('Verify checkout details are correct', function () {
-        loginPage.login(this.loginData.username, this.loginData.password)
-        productPage.getPageTitle().should("have.text", this.productData.productPageText)
-        productPage.getProducts().each(($el, index, $list) => {
-            while (index < 2) {
+        cy.log("Logging in to Sauce demo.")
+        loginPage.login(this.loginDetails.username, this.loginDetails.password)
+        cy.log("Checking Login is success")
+        productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
+        cy.log("Adding two products to cart")
+        productPage.productsList().each(($product, productIndex, $productList) => {
+            while (productIndex < 2) {
                 cy.contains("Add to cart").click()
-                index++
+                productIndex++
             }
         })
-        productPage.getAddToCartButton()
-        cartPage.getPageTitle().should("have.text", this.cartData.cartPageText)
-        cartPage.getListOfProductsAdded().should("have.text", this.cartData.listOfProductsAdded)
-        cartPage.getCheckoutButton()
-        checkoutPage.getPageTitle().should("have.text", this.checkoutData.checkoutPageText)
-        checkoutPage.getFirstNameTextBox().type(this.checkoutData.firstname)
-        checkoutPage.getLastNameTextBox().type(this.checkoutData.lastname)
-        checkoutPage.getPostalCodeTextBox().type(this.checkoutData.postalcode)
-        checkoutPage.getContinueButton()
-        checkoutOverviewPage.getPageTitle().should("have.text", this.checkoutOverviewData.checkoutOverviewPageText)
-
+        cy.log("Clicking on cart badge")
+        productPage.addToCart()
+        cy.log("Checking Checkout Page is displayed")
+        cartPage.getPageTitle().should("have.text", this.cartDetails.cartPageText)
+        cy.log("Checking two items added in the cart")
+        cartPage.listOfProductsAdded().should("have.text", this.cartDetails.listOfProductsAdded)
+        cy.log("Clicking on checkout")
+        cartPage.checkout()
+        cy.log("Checking CheckoutOverview Page is displayed")
+        checkOutPage.getPageTitle().should("have.text", this.checkOutDetails.checkOutPageText)
+        cy.log("Entering Firstname")
+        checkOutPage.firstName().type(this.checkOutDetails.firstName)
+        cy.log("Entering Lastname")
+        checkOutPage.lastName().type(this.checkOutDetails.lastName)
+        cy.log("Entering Postalcode")
+        checkOutPage.postalCode().type(this.checkOutDetails.postalCode)
+        cy.log("Clicking on continue")
+        checkOutPage.continue()
+        cy.log("Checking checkout overview page is displayed")
+        checkOutOverviewPage.getPageTitle().should("have.text", this.checkOutOverviewDetails.checkOutOverviewPageText)
     })
 
     after(function () {
+        cy.log("Logging out from Sauce demo")
         cy.logoutFromApplication()
-        loginPage.getLoginButton().should("have.value", "Login")
+        loginPage.clickOnLogin().should("have.value", "Login")
     })
 })

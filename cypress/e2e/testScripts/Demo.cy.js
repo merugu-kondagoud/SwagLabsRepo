@@ -1,6 +1,6 @@
 ///<reference types ="Cypress"/>
 
-describe('Test suite', () =>{
+describe('My SwagLab Test', () =>{
 
 it('Launch Swag Labs application', () =>{
     cy.launchApplication()

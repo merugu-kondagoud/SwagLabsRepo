@@ -1,31 +1,35 @@
 import LoginPage from "../../PageFiles/LoginPage"
 import ProductPage from "../../PageFiles/ProductPage"
 
+const loginPage = new LoginPage()
+const productPage = new ProductPage()
+
 describe('My SwagLab Test Suite', function () {
   beforeEach(function () {
-    cy.fixture('login').then(function (loginData) {
-      this.loginData = loginData
+    cy.fixture('login').then(function (loginDetails) {
+      this.loginDetails = loginDetails
     })
-    cy.fixture('product').then(function (productData) {
-      this.productData = productData
+    cy.fixture('product').then(function (productDetails) {
+      this.productDetails = productDetails
     })
   })
 
-  const loginPage = new LoginPage()
-  const productPage = new ProductPage()
-
   before(function () {
+    cy.log("Launching Sauce demo.com")
     cy.launchApplication()
   })
 
   it('Verify Saucedemo.com login is successful', function () {
 
-    loginPage.login(this.loginData.username, this.loginData.password)
-    productPage.getPageTitle().should("have.text", this.productData.productPageText)
+    cy.log("Logging in to Sauce demo.")
+    loginPage.login(this.loginDetails.username, this.loginDetails.password)
+    cy.log("Checking Login is success")
+    productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
   })
 
   after(function () {
+    cy.log("Logging out from Sauce demo")
     cy.logoutFromApplication()
-    loginPage.getLoginButton().should("have.value", "Login")
+    loginPage.clickOnLogin().should("have.value", "Login")
   })
 })

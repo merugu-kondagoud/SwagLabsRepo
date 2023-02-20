@@ -1,117 +1,128 @@
 import LoginPage from "../../PageFiles/LoginPage"
 import ProductPage from "../../PageFiles/ProductPage"
 import CartPage from "../../PageFiles/CartPage"
-import CheckoutPage from "../../PageFiles/CheckoutPage"
-import CheckoutOverviewPage from "../../PageFiles/CheckoutOverviewPage"
-import CheckoutCompletePage from "../../PageFiles/CheckoutCompletePage"
+import CheckOutPage from "../../PageFiles/CheckOutPage"
+import CheckOutOverviewPage from "../../PageFiles/CheckOutOverviewPage"
+import CheckOutCompletePage from "../../PageFiles/CheckOutCompletePage"
+
+const loginPage = new LoginPage()
+const productPage = new ProductPage()
+const cartPage = new CartPage()
+const checkOutPage = new CheckOutPage()
+const checkOutOverviewPage = new CheckOutOverviewPage()
+const checkOutCompletePage = new CheckOutCompletePage()
+var priceOfFirstItemSplit
+var priceOfSecondItemSplit
+var priceOfFirstItem
+var priceOfSecondItem
+var sum
+const tax = 3.20
 
 describe('My SwagLab Test', function () {
     beforeEach(function () {
-        cy.fixture('login').then(function (loginData) {
-            this.loginData = loginData
+        cy.fixture('login').then(function (loginDetails) {
+            this.loginDetails = loginDetails
         })
-        cy.fixture('product').then(function (productData) {
-            this.productData = productData
+        cy.fixture('product').then(function (productDetails) {
+            this.productDetails = productDetails
         })
-        cy.fixture('cart').then(function (cartData) {
-            this.cartData = cartData
+        cy.fixture('cart').then(function (cartDetails) {
+            this.cartDetails = cartDetails
         })
-        cy.fixture('checkout').then(function (checkoutData) {
-            this.checkoutData = checkoutData
+        cy.fixture('checkout').then(function (checkOutDetails) {
+            this.checkOutDetails = checkOutDetails
         })
-        cy.fixture('checkoutcomplete').then(function (checkoutCompleteData) {
-            this.checkoutCompleteData = checkoutCompleteData
+        cy.fixture('checkoutcomplete').then(function (checkOutCompleteDetails) {
+            this.checkOutCompleteDetails = checkOutCompleteDetails
         })
-        cy.fixture('checkoutoverview').then(function (checkoutOverviewData) {
-            this.checkoutOverviewData = checkoutOverviewData
+        cy.fixture('checkoutoverview').then(function (checkOutOverviewDetails) {
+            this.checkOutOverviewDetails = checkOutOverviewDetails
         })
     })
 
-    const loginPage = new LoginPage()
-    const productPage = new ProductPage()
-    const cartPage = new CartPage()
-    const checkoutPage = new CheckoutPage()
-    const checkoutOverviewPage = new CheckoutOverviewPage()
-    const checkoutCompletePage = new CheckoutCompletePage()
-
     before(function () {
+        cy.log("Launching Sauce demo.com")
         cy.launchApplication()
     })
 
     it('Verify Checkout is done Successfully', function () {
 
-        loginPage.login(this.loginData.username, this.loginData.password)
-        productPage.getPageTitle().should("have.text", this.productData.productPageText)
-        productPage.getProducts().each(($el, index, $list) => {
-            while (index < 2) {
+        cy.log("Logging in to Sauce demo.")
+        loginPage.login(this.loginDetails.username, this.loginDetails.password)
+        cy.log("Checking Login is success")
+        productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
+        cy.log("Adding two products to cart")
+        productPage.productsList().each(($product, productIndex, $productList) => {
+            while (productIndex < 2) {
                 cy.contains("Add to cart").click()
-                index++
+                productIndex++
             }
         })
-        productPage.getAddToCartButton()
-        cartPage.getPageTitle().should("have.text", this.cartData.cartPageText)
-        cartPage.getListOfProductsAdded().should("have.text", this.cartData.listOfProductsAdded)
-        cartPage.getCheckoutButton()
-        checkoutPage.getPageTitle().should("have.text", this.checkoutData.checkoutPageText)
-        checkoutPage.getFirstNameTextBox().type(this.checkoutData.firstname)
-        checkoutPage.getLastNameTextBox().type(this.checkoutData.lastname)
-        checkoutPage.getPostalCodeTextBox().type(this.checkoutData.postalcode)
-        checkoutPage.getContinueButton()
-        checkoutOverviewPage.getPageTitle().should("have.text", this.checkoutOverviewData.checkoutOverviewPageText)
-        checkoutOverviewPage.getCartItemQuantity().each(($el, index, $list) => {
-            if (index == 0) {
-                const quantityOfFirstItem = $el.text()
-                expect(quantityOfFirstItem).to.be.equal(this.checkoutOverviewData.cartItemQuantity1)
+        cy.log("Clicking on cart badge")
+        productPage.addToCart()
+        cy.log("Checking Checkout Page is displayed")
+        cartPage.getPageTitle().should("have.text", this.cartDetails.cartPageText)
+        cy.log("Checking two items added in the cart")
+        cartPage.listOfProductsAdded().should("have.text", this.cartDetails.listOfProductsAdded)
+        cy.log("Clicking on checkout")
+        cartPage.checkout()
+        cy.log("Checking CheckoutOverview Page is displayed")
+        checkOutPage.getPageTitle().should("have.text", this.checkOutDetails.checkOutPageText)
+        cy.log("Entering Firstname")
+        checkOutPage.firstName().type(this.checkOutDetails.firstName)
+        cy.log("Entering Lastname")
+        checkOutPage.lastName().type(this.checkOutDetails.lastName)
+        cy.log("Entering Postalcode")
+        checkOutPage.postalCode().type(this.checkOutDetails.postalCode)
+        cy.log("Clicking on continue")
+        checkOutPage.continue()
+        cy.log("Checking checkout overview page is displayed")
+        checkOutOverviewPage.getPageTitle().should("have.text", this.checkOutOverviewDetails.checkOutOverviewPageText)
+        cy.log("Checking cart item's quantity")
+        checkOutOverviewPage.cartItemQuantity().each(($product, productIndex, $productListist) => {
+            if (productIndex == 0) {
+                const quantityOfFirstItem = $product.text()
+                expect(quantityOfFirstItem).to.be.equal(this.checkOutOverviewDetails.cartItemQuantity1)
             }
-            if (index == 1) {
-                const quantityOfSecondItem = $el.text()
-                expect(quantityOfSecondItem).to.be.equal(this.checkoutOverviewData.cartItemQuantity2)
+            if (productIndex == 1) {
+                const quantityOfSecondItem = $product.text()
+                expect(quantityOfSecondItem).to.be.equal(this.checkOutOverviewDetails.cartItemQuantity2)
             }
         })
-        checkoutOverviewPage.getCartItemPrice().each(($el, index, $list) => {
-            if (index == 0) {
-                const priceOfFirstItem = $el.text()
-                expect(priceOfFirstItem).to.be.equal(this.checkoutOverviewData.cartItemPrice1)
-            }
-            if (index == 1) {
-                const priceOfSecondItem = $el.text()
-                expect(priceOfSecondItem).to.be.equal(this.checkoutOverviewData.cartItemPrice2)
-            }
-        })
-        var priceOfFirstItemSplit
-        var priceOfSecondItemSplit
-        var priceOfFirstItem
-        var priceOfSecondItem
-        var sum
-        const tax = 3.20
-        checkoutOverviewPage.getCartItemPrice().each(($el, index, $list) => {
-            if (index == 0) {
-                priceOfFirstItem = $el.text()
-                expect(priceOfFirstItem).to.be.equal(this.checkoutOverviewData.cartItemPrice1)
+        cy.log("Checking cart item's price")
+        checkOutOverviewPage.cartItemPrice().each(($product, productIndex, $productList) => {
+            if (productIndex == 0) {
+                priceOfFirstItem = $product.text()
+                expect(priceOfFirstItem).to.be.equal(this.checkOutOverviewDetails.cartItemPrice1)
                 priceOfFirstItemSplit = priceOfFirstItem.split("$")
                 priceOfFirstItemSplit = priceOfFirstItemSplit[1]
             }
-            if (index == 1) {
-                priceOfSecondItem = $el.text()
-                expect(priceOfSecondItem).to.be.equal(this.checkoutOverviewData.cartItemPrice2)
+            if (productIndex == 1) {
+                priceOfSecondItem = $product.text()
+                expect(priceOfSecondItem).to.be.equal(this.checkOutOverviewDetails.cartItemPrice2)
                 priceOfSecondItemSplit = priceOfSecondItem.split("$")
                 priceOfSecondItemSplit = priceOfSecondItemSplit[1]
                 sum = Number(priceOfFirstItemSplit) + Number(priceOfSecondItemSplit) + Number(tax)
                 const finalCartTotal = "Total: $" + sum
-                expect(finalCartTotal).to.be.equal(this.checkoutOverviewData.cartTotal)
+                expect(finalCartTotal).to.be.equal(this.checkOutOverviewDetails.cartTotal)
             }
 
         })
+        cy.log("Clicking on finish")
+        checkOutOverviewPage.finish()
+        cy.log("Checking checkout complete page is displayed")
+        checkOutCompletePage.getPageTitle().should("have.text", this.checkOutCompleteDetails.checkOutCompletePageText)
 
-        checkoutOverviewPage.getFinishButton()
-        checkoutCompletePage.getPageTitle().should("have.text", this.checkoutCompleteData.checkoutCompletePageText)
-        checkoutCompletePage.getThankyouTextMessage().should("have.text", this.checkoutCompleteData.thankyouMessage)
-        checkoutCompletePage.getBackToHomeButton()
-        productPage.getPageTitle().should("have.text", this.productData.productPageText)
+        checkOutCompletePage.textMessage().should("have.text", this.checkOutCompleteDetails.thankYouMessage)
+        cy.log("Clicking on Back to Home ")
+        checkOutCompletePage.backToHome()
+        cy.log("Checking product is displayed")
+        productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
     })
 
     after(function () {
+        cy.log("Logging out from Sauce demo")
         cy.logoutFromApplication()
-        loginPage.getLoginButton().should("have.value", "Login")
+        loginPage.clickOnLogin().should("have.value", "Login")
     })
 })

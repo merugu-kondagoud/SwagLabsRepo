@@ -1,15 +1,15 @@
-class CheckoutCompletePage {
+class CheckOutCompletePage {
 
     getPageTitle() {
         return cy.contains("Checkout: Complete!")
     }
 
-    getThankyouTextMessage() {
+    textMessage() {
         return cy.contains("THANK YOU FOR YOUR ORDER")
     }
 
-    getBackToHomeButton() {
+    backToHome() {
         return cy.contains("Back Home").click()
     }
 }
-export default CheckoutCompletePage
+export default CheckOutCompletePage

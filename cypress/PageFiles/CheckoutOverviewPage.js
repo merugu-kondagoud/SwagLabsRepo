@@ -1,27 +1,24 @@
-class CheckoutOverviewPage {
+class CheckOutOverviewPage {
     getPageTitle() {
         return cy.contains("Checkout: Overview")
     }
-    getFinishButton() {
+    finish() {
         return cy.contains("Finish").click()
     }
-    getCartItemQuantity() {
+    cartItemQuantity() {
         return cy.get(".cart_quantity")
     }
-    getCartItemPrice() {
+    cartItemPrice() {
         return cy.get(".inventory_item_price")
     }
-    getCartItems() {
+    cartItems() {
         return cy.get(".cart_item")
     }
-    getCartTotal() {
+    cartTotal() {
         return cy.get(".summary_total_label")
     }
-    getCartTotal() {
-        return cy.get(".summary_total_label")
-    }
-    getCartList() {
+    cartList() {
         return cy.get(".cart_list")
     }
 }
-export default CheckoutOverviewPage
+export default CheckOutOverviewPage

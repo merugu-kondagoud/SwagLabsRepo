@@ -2,12 +2,12 @@ class ProductPage {
     getPageTitle() {
         return cy.contains("Products")
     }
-    getProducts() {
+    productsList() {
         return cy.get(".inventory_list")
     }
-    getAddToCartButton() {
+    addToCart() {
         return cy.get(".shopping_cart_link").click()
     }
-    
+
 }
 export default ProductPage

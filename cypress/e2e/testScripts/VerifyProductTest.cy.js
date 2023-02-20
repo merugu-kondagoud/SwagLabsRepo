@@ -2,44 +2,50 @@ import LoginPage from "../../PageFiles/LoginPage"
 import ProductPage from "../../PageFiles/ProductPage"
 import CartPage from "../../PageFiles/CartPage"
 
+const loginPage = new LoginPage()
+const productPage = new ProductPage()
+const cartPage = new CartPage()
+
 describe('My SwagLab Test', function () {
   beforeEach(function () {
-    cy.fixture('login').then(function (loginData) {
-      this.loginData = loginData
+    cy.fixture('login').then(function (loginDetails) {
+      this.loginDetails = loginDetails
     })
-    cy.fixture('product').then(function (productData) {
-      this.productData = productData
+    cy.fixture('product').then(function (productDetails) {
+      this.productDetails = productDetails
     })
-    cy.fixture('cart').then(function (cartData) {
-      this.cartData = cartData
+    cy.fixture('cart').then(function (cartDetails) {
+      this.cartDetails = cartDetails
     })
   })
 
-  const loginPage = new LoginPage()
-  const productPage = new ProductPage()
-  const cartPage = new CartPage()
-
   before(function () {
+    cy.log("Launching Sauce demo.com")
     cy.launchApplication()
   })
 
   it('Add products to cart', function () {
 
-    loginPage.login(this.loginData.username, this.loginData.password)
-    productPage.getPageTitle().should("have.text", this.productData.productPageText)
-    productPage.getProducts().each(($el, index, $list) => {
-      while (index < 2) {
+    cy.log("Logging in to Sauce demo.")
+    loginPage.login(this.loginDetails.username, this.loginDetails.password)
+    cy.log("Checking Login is success")
+    productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
+    cy.log("Adding two products to cart")
+    productPage.productsList().each(($product, productIndex, $productList) => {
+      while (productIndex < 2) {
         cy.contains("Add to cart").click()
-        index++
+        productIndex++
       }
     })
-    productPage.getAddToCartButton()
-    cartPage.getPageTitle().should("have.text", this.cartData.cartPageText)
-
+    cy.log("Clicking on cart badge")
+    productPage.addToCart()
+    cy.log("Checking Checkout Page is displayed")
+    cartPage.getPageTitle().should("have.text", this.cartDetails.cartPageText)
   })
 
   after(function () {
+    cy.log("Logging out from Sauce demo")
     cy.logoutFromApplication()
-    loginPage.getLoginButton().should("have.value", "Login")
+    loginPage.clickOnLogin().should("have.value", "Login")
   })
 })

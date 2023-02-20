@@ -1,18 +1,17 @@
 class LoginPage {
-    getUserNameTextBox() {
+    userName() {
         return cy.get("#user-name")
     }
-    getPasswordTextBox() {
+    password() {
         return cy.get("#password")
     }
-    getLoginButton() {
+    clickOnLogin() {
         return cy.get("#login-button")
     }
-    login(username, password)
-    {
-    this.getUserNameTextBox().type(username)
-    this.getPasswordTextBox().type(password)
-    this.getLoginButton().click()
+    login(username, password) {
+        this.userName().type(username)
+        this.password().type(password)
+        this.clickOnLogin().click()
     }
 }
 export default LoginPage
