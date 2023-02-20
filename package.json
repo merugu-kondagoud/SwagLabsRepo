@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "pretest": "rimraf -r ./cypress/reports/*.json ",
-    "test": "npx cypress run --browser edge",
-    "cypress-test": "cypress run --browser chrome",
+    "test": "npm run cypress-test || npm run posttest",
+    "cypress-test":"cypress run",
     "posttest": "npm run merge-reports && npm run generate-html-report",
     "merge-reports": "mochawesome-merge ./cypress/reports/*.json > ./report1.json",
-    "generate-html-report": "marge ./report1.json --reportDir ./cypress/reports"
+    "generate-html-report":"marge ./report1.json --reportDir ./cypress/reports"  
   },
   "author": "subhashinibollineni",
   "license": "ISC",
