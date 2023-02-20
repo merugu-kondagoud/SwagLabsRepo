@@ -1,5 +1,4 @@
 {
-    "username": "standard_user",
-    "password": "secret_sauce",
-    "expectedtext": "Products"
+    "userName": "standard_user",
+    "password": "secret_sauce"
 }

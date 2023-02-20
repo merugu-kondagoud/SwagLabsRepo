@@ -1,7 +1,7 @@
 {
-    "firstproductquantity": "1",
-    "secondproductquantity": "1",
-    "firstproductprice": "$29.99",
-    "secondproductprice": "$9.99",
-    "totalpriceofproducts": "$43.18"
+    "firstProductQuantity": "1",
+    "secondProductQuantity": "1",
+    "firstProductPrice": "$29.99",
+    "secondProductPrice": "$9.99",
+    "totalPriceOfProducts": "$43.18"
 }

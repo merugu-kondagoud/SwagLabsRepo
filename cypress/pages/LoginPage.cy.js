@@ -6,7 +6,7 @@ class LoginPage {
     getUserName() {
         return cy.get(this.textUsername)
     }
-    getPassword(password) {
+    getPassword() {
         return cy.get(this.textPassword)
     }
     getLoginButton() {

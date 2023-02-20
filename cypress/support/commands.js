@@ -23,16 +23,23 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
 /// <reference types="Cypress"/>
+
 //Launch Swag labs application
 Cypress.Commands.add('launchApplication', () => {
     cy.visit('https://www.saucedemo.com/')
 })
-Cypress.Commands.add('performLogout', () => {
+
+//Logout of Swag labs application
+Cypress.Commands.add('logOut', () => {
     cy.wait(3000)
     cy.get(".bm-burger-button").click()
     cy.get("#logout_sidebar_link").click()
+
 })
-Cypress.Commands.add('verifyLogOutSuccess', () => {
+
+//Verify logout
+Cypress.Commands.add('verifyLogOut', () => {
     cy.get("[value='Login']").should('be.visible')
 }) 

@@ -5,7 +5,7 @@ import CheckOutYourInformationPage from "../../pages/CheckOutYourInformationPage
 import CheckOutOverviewPage from "../../pages/CheckOutOverviewPage.cy";
 import CheckOutCompletePage from "../../pages/CheckOutCompletePage.cy";
 
-describe("Verify Back to home navigation test", () => {
+describe("Verify Back to home", () => {
 
     let loginData
     let checkOutYourInformationData
@@ -13,43 +13,58 @@ describe("Verify Back to home navigation test", () => {
     let checkOutCompleteData
     let productsData
     before(() => {
+        cy.log("Launch Swag Labs application.")
         cy.launchApplication()
+        cy.log("Load loginData.json fixture.")
         cy.fixture("loginData").then((data) => {
             loginData = data
         })
+        cy.log("Load checkOutYourInformationData.json fixture.")
         cy.fixture("checkOutYourInformationData").then((data) => {
             checkOutYourInformationData = data
         })
+        cy.log("Load checkOutOverviewData.json fixture.")
         cy.fixture("checkOutOverviewData").then((data) => {
             checkOutOverviewData = data
         })
+        cy.log("Load checkOutCompleteData.json fixture.")
         cy.fixture("checkOutCompleteData").then((data) => {
             checkOutCompleteData = data
         })
+        cy.log("Load productsData.json fixture.")
         cy.fixture("productsData").then((data) => {
             productsData = data
         })
     })
 
     it("Back to home Test", () => {
-        let loginPage = new LoginPage();
-        loginPage.login(loginData.username, loginData.password)
-        let productsPage = new ProductsPage();
-        productsPage.addProductsToCart()
-        let yourCart = new YourCartPage();
-        yourCart.clickCheckOutButton()
-        let checkOutYourInformationPage = new CheckOutYourInformationPage();
-        checkOutYourInformationPage.enterYourInformation(checkOutYourInformationData.firstname, checkOutYourInformationData.lastname, checkOutYourInformationData.postalcode)
+        cy.log("Creating object instances.")
+        let loginPage = new LoginPage()
+        let productsPage = new ProductsPage()
+        let yourCart = new YourCartPage()
+        let checkOutYourInformationPage = new CheckOutYourInformationPage()
         let checkOutOverviewPage = new CheckOutOverviewPage()
-        checkOutOverviewPage.clickFinishButton()
         let checkOutCompletePage = new CheckOutCompletePage()
-        checkOutCompletePage.checkOutCompleteVerify(checkOutCompleteData.expectedtext)
+        cy.log("Login to Swag Labs Application.")
+        loginPage.login(loginData.userName, loginData.password)
+        cy.log("Add required products to cart.")
+        productsPage.addProductsToCart()
+        cy.log("Click Checkout Button.")
+        yourCart.clickCheckOutButton()
+        cy.log("Enter firstname, lastname, postal code in checkout:your information page.")
+        checkOutYourInformationPage.enterYourInformation(checkOutYourInformationData.firstName, checkOutYourInformationData.lastName, checkOutYourInformationData.postalCode)
+        cy.log("Click Finish Checkout Button")
+        checkOutOverviewPage.clickFinishButton()
+        cy.log("Click Back to Home button in checkout:complete page.")
         checkOutCompletePage.clickBackToHome()
-        productsPage.verifyBackToHome(productsData.expectedtitle)
+        cy.log("Verify user is navigated to Products page.")
+        productsPage.verifyBackToHome(productsData.expectedTitle)
     })
 
     after(() => {
-        cy.performLogout()
-        cy.verifyLogOutSuccess()
+        cy.log("Logout of Swag Labs Application.")
+        cy.logOut()
+        cy.log("Verify logout is successful.")
+        cy.verifyLogOut()
     })
 })
