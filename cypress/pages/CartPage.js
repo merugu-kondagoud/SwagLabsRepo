@@ -3,8 +3,7 @@ export class CartPage {
     getYourCard = '//span[contains(text(), "Your Cart")]';
     checkoutButton = '#checkout';
 
-    getCartLabel()
-    {
+    getCartLabel() {
         return cy.get('.cart_item_label');
     }
 
@@ -12,8 +11,7 @@ export class CartPage {
         cy.get(this.getCart).click();
     }
 
-    validateYourCartPageProperties(expectedText)
-    {
+    validateYourCartPageProperties(expectedText) {
         cy.xpath(this.getYourCard).should("have.text", expectedText)
     }
 
@@ -23,7 +21,7 @@ export class CartPage {
         });
     }
 
-    selectCheckOut() {
+    clickCheckOut() {
         cy.get(this.checkoutButton).click();
     }
 }

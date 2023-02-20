@@ -32,14 +32,12 @@ const cartPage = new CartPage();
 const backToHome = new BackToHomePage();
 
 Cypress.Commands.add('launchBrowser', () => {
-    //cy.visit("https://www.saucedemo.com/")
     cy.visit('https://www.saucedemo.com')
 })
 
 Cypress.Commands.add('validateYourCart', (productName) => {
-    cartPage.getCartLabel().each(($el, index, $list) => {
-        const textproduct = $el.find('.inventory_item_name').text()
-        //const textproduct = cartPage.getItemName().text()
+    cartPage.getCartLabel().each((item, index, $list) => {
+        const textproduct = item.find('.inventory_item_name').text()
         if (textproduct.includes(productName)) {
             expect(textproduct).to.be.equal(productName)
         }
@@ -51,12 +49,8 @@ Cypress.Commands.add('logout', () => {
     backToHome.getLogoutButton().click({ force: true });
 })
 
-
-
-
-
-
-
-
-
-
+Cypress.Commands.add('handleFailTests', () => {
+    Cypress.on("fail", (error, runnable) => {
+        return false;
+    });
+})

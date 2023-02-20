@@ -16,7 +16,7 @@ export class CheckoutPage {
         cy.get(this.postalCode).type(postalCode);
     }
 
-    selectContinueButton() {
+    clickContinue() {
         cy.get(this.continueButton).click()
     }
 }

@@ -4,7 +4,6 @@ export class HomePage {
     labelOfProducts = '.inventory_item_label';
     inventoryItemName = '.inventory_item_name';
 
-
     validateHomePageProperties() {
         cy.xpath(this.product).should("have.text", "Products");
     }

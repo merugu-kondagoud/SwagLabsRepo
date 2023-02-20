@@ -6,10 +6,11 @@ export class CheckoutOverviewPage {
     finishButton = '#finish'
     cartItem = '.cart_item'
     cartQuantity = '.cart_quantity'
+    totalWithoutTax = ".summary_tax_label"
 
     validateProductQuantity(productQuantity) {
-        cy.get(this.cartItem).each(($el, index, $list) => {
-            const textproduct = $el.find(this.cartQuantity).text()
+        cy.get(this.cartItem).each((items, index, $list) => {
+            const textproduct = items.find(this.cartQuantity).text()
 
             if (textproduct.includes(productQuantity)) {
                 expect(textproduct).to.be.equal(productQuantity)
@@ -22,15 +23,15 @@ export class CheckoutOverviewPage {
         var tax = 0;
         var sumOfProductAndTax = 0;
 
-        cy.get(this.itemPrice).each(($e1, index, $list) => {
-            const getText = $e1.text();
+        cy.get(this.itemPrice).each((price, index, $list) => {
+            const getText = price.text();
             var splitText = getText.split("$")
             splitText = splitText[1].trim()
             sumofProducts = Number(sumofProducts) + Number(splitText)
 
         }).then(function () {
-            cy.get(".summary_tax_label").each(($e1, index, $list) => {
-                const getText = $e1.text();
+            cy.get(".summary_tax_label").each((price, index, $list) => {
+                const getText = price.text();
                 var splitText = getText.split("$")
                 splitText = splitText[1].trim()
                 tax = Number(tax) + Number(splitText)
@@ -44,12 +45,11 @@ export class CheckoutOverviewPage {
             const copyText = element.text();
             var splitText = copyText.split("$")
             var total = splitText[1].trim()
-
             expect(Number(total)).to.equal(Number(sumOfProductAndTax));
         })
     }
 
-    selectFinish() {
+    clickFinish() {
         cy.get(this.finishButton).click()
     }
 

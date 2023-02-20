@@ -6,7 +6,7 @@ export class CheckoutCompletePage {
     cy.get(this.completeMessage).should("have.text", expectedText);
   }
 
-  selectBackHome() {
+  clickBackHome() {
     cy.get(this.backHomeButton).click();
   }
 }
