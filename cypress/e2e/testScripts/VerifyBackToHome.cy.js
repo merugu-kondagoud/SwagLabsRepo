@@ -36,7 +36,6 @@ describe("Navigate back to home page", function () {
         cy.logout();
     })
 
-
     it("Navigate back to home page", function () {
         cy.log("Login to the application using valida credentials.");
         loginPage.login(this.LoginData.userName, this.LoginData.password);
