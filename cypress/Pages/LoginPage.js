@@ -2,7 +2,7 @@ export class loginPage {
 
     userName = '#user-name'
     password = '#password'
-    LoginButton = '#login-button'
+    loginButton = '#login-button'
 
     getUsername() {
         return cy.get(this.userName)
@@ -12,7 +12,7 @@ export class loginPage {
         return cy.get(this.password)
     }
 
-    getLogin_button() {
-        return cy.get(this.LoginButton)
+    getLoginButton() {
+        return cy.get(this.loginButton)
     }
 }

@@ -1,6 +1,6 @@
 {
-    "OverviewMessage": "Checkout: Your Information",
-    "Firstname": "Prem",
-    "Lastname": "Sarathi",
-    "ZipCode": "679879"
+    "overviewMessage": "Checkout: Your Information",
+    "firstName": "Prem",
+    "lastName": "Sarathi",
+    "zipCode": "679879"
 }

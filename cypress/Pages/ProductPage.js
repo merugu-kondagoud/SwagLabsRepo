@@ -1,25 +1,25 @@
 export class ProductPage {
 
-    ProductLogo = 'Products'
-    ProductLabel = '.inventory_item_label'
-    ProductName = 'div.inventory_item_name'
-    CartLogo = '.shopping_cart_link'
+    productLogo = 'Products'
+    productLabel = '.inventory_item_label'
+    productName = 'div.inventory_item_name'
+    cartLogo = '.shopping_cart_link'
 
 
-    getValidateProductPage(Product) {
-        cy.contains(this.ProductLogo).then(function (element) {
-            const expectedText = element.text()
-            expect(expectedText).to.equal(Product)
+    validateProductPage(Product) {
+        cy.contains(this.productLogo).then(function (productElement) {
+            const productText = productElement.text()
+            expect(productText).to.equal(Product)
             cy.log("Logged in successfully")
         })
     }
 
-    getSelectProducts(productName) {
-        cy.get(this.ProductLabel).each(($el, index, $list) => {
-            const textproduct = $el.find(this.ProductName).text()
+    clickProducts(productName) {
+        cy.get(this.productLabel).each((productList, index, $list) => {
+            const productText = productList.find(this.productName).text()
             for (let element of productName) {
-                if (textproduct == (element)) {
-                    let addCartselector = "#add-to-cart-" + textproduct.replace(/\s/gm, "-").toLowerCase();
+                if (productText == (element)) {
+                    let addCartselector = "#add-to-cart-" + productText.replace(/\s/gm, "-").toLowerCase();
                     cy.log(addCartselector);
                     cy.get(addCartselector).click();
                 }
@@ -27,8 +27,8 @@ export class ProductPage {
         })
     }
 
-    getClick_CartButton() {
-        return cy.get(this.CartLogo).click()
+    clickCartButton() {
+        return cy.get(this.cartLogo).click()
     }
 
 }

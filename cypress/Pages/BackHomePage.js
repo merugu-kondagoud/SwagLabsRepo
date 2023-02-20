@@ -1,14 +1,13 @@
 export class BackHomePage {
 
-    BackHomeButton = '#back-to-products'
-    ProductLogo = '.title'
+    backHomeButton = '#back-to-products'
+    productLogo = '.title'
 
-    getClick_BackHomeButton() {
-        cy.get(this.BackHomeButton).click()
+    clickBackHomeButton() {
+        cy.get(this.backHomeButton).click()
     }
 
-    getValidate_ProductLabel(Logo) {
-        cy.get(this.ProductLogo).should('have.text', Logo)
-        cy.log("Back to product page successfully")
+    validateProductLabel(logo) {
+        cy.get(this.productLogo).should('have.text', logo)
     }
 }

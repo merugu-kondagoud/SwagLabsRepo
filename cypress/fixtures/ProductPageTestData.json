@@ -1,4 +1,4 @@
 {
-    "SuccessMessage": "Products",
-    "Productname": [ "Sauce Labs Bike Light","Sauce Labs Onesie", "Sauce Labs Backpack", "Sauce Labs Fleece Jacket"]
+    "successMessage": "Products",
+    "productName": [ "Sauce Labs Bike Light","Sauce Labs Onesie", "Sauce Labs Backpack", "Sauce Labs Fleece Jacket"]
 }

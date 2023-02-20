@@ -6,13 +6,6 @@ const loginpage = new loginPage()
 const overView = new Checkout_OverviewPage
 const logout = new LogoutPage()
 
-
-// Cypress.Commands.add('launchApplication', () => {
-//     cy.visit(Cypress.env("SwagLabsUrl"))
-
-// })
-
-//Launch Swag labs application 
 Cypress.Commands.add('launchApplication', () => { 
     cy.visit('https://www.saucedemo.com/')
 })
@@ -20,15 +13,14 @@ Cypress.Commands.add('launchApplication', () => {
 Cypress.Commands.add('Login', (username, Password) => {
     loginpage.getUsername().type(username)
     loginpage.getPassword().type(Password)
-    loginpage.getLogin_button().click()
+    loginpage.getLoginButton().click()
 
 })
 
 Cypress.Commands.add('validateProduct', (productName) => {
-    cy.get('.inventory_item_name').each(($el, index, $list) => {
-        const selectedProduct = $el.text()
+    cy.get('.inventory_item_name').each((productlabels, index, $list) => {
+        const selectedProduct = productlabels.text()
         if (selectedProduct.includes(productName)) {
-
             expect(selectedProduct).to.be.equal(productName)
         }
     })

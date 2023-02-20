@@ -1,19 +1,19 @@
 export class YourCartPage {
 
-    YourCartLogo = 'Your Cart'
-    CheckoutButton = '#checkout'
+    yourCartLogo = 'Your Cart'
+    checkoutButton = '#checkout'
 
-    getValidate_CheckoutPage(Logo) {
-        return cy.contains(this.YourCartLogo).should('have.text', Logo)
+    validateCheckout(Logo) {
+        return cy.contains(this.yourCartLogo).should('have.text', Logo)
     }
 
-    getValidate_YourCartProducts(productName) {
-        productName.forEach(element => {
-            cy.validateProduct(element);
+    validateYourCartProducts(productName) {
+        productName.forEach(listOfProducts => {
+            cy.validateProduct(listOfProducts);
         });
     }
 
-    getClick_CheckoutButton() {
-        return cy.get(this.CheckoutButton).click()
+    clickCheckout() {
+        return cy.get(this.checkoutButton).click()
     }
 }
