@@ -4,7 +4,7 @@ import ProductsPage from "../../pages/ProductsPage.cy";
 describe("Verify Login to saucelabs", () => {
 
     let loginData
-    beforeEach(() => {
+    before(() => {
         cy.log("Launch Swag Labs application.")
         cy.launchApplication()
         cy.log("Load loginData.json fixture.")

@@ -9,7 +9,7 @@ describe("Verify checkout overview", () => {
     let loginData
     let checkOutYourInformationData
     let checkOutOverviewData
-    beforeEach(() => {
+    before(() => {
         cy.log("Launch Swag Labs application.")
         cy.launchApplication()
         cy.log("Load loginData.json fixture.")

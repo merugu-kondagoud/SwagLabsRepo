@@ -6,7 +6,7 @@ describe("Verify Products In Cart", () => {
 
     let loginData
     let productsData
-    beforeEach(() => {
+    before(() => {
         cy.log("Launch Swag Labs application.")
         cy.launchApplication()
         cy.log("Load loginData.json fixture.")
