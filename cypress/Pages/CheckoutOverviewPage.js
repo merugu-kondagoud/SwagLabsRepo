@@ -1,4 +1,5 @@
 class CheckoutOverviewPage {
+    
 
     getFinish() {
         return cy.get('#finish')

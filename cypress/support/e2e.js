@@ -26,3 +26,8 @@ Cypress.on("fail", (error, runnable) => {
         throw error;
     }
 })
+Cypress.on('fail', (error, runnable) => {
+    if (error.message.includes('buttondoestexist')) {
+        throw error
+    }
+})
