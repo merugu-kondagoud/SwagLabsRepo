@@ -1,4 +1,5 @@
 export class LoginPage {
+
     userName = "#user-name";
     password = "#password";
     loginButton = "#login-button";
@@ -9,7 +10,6 @@ export class LoginPage {
     }
 
     login(userName, password) {
-        cy.handleFailTests();
         cy.get(this.loginButton).should("be.visible");
         cy.get(this.userName).type(userName);
         cy.get(this.password).type(password);

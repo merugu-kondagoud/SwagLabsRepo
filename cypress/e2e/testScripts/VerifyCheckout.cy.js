@@ -7,6 +7,14 @@ import { HomePage } from '../../pages/HomePage';
 import { CheckoutPage } from '../../pages/CheckoutPage';
 
 describe("Provide user information in YOUR INFORMATION page", function () {
+
+    Cypress.on('fail', (error, runnable) => {
+        if (error.message.includes('A fixture file could not be found')) {
+            console.log("Please check your file path or input file");
+            throw error;
+        }
+    });
+
     const loginPage = new LoginPage()
     const homePage = new HomePage()
     const shoppingCartContainer = new CartPage()

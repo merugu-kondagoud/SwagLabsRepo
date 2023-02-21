@@ -1,4 +1,5 @@
 export class CheckoutCompletePage {
+  
   completeMessage = ".complete-header";
   backHomeButton = "#back-to-products"
 

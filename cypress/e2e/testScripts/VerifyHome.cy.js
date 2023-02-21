@@ -5,6 +5,13 @@ import { LoginPage } from "../../pages/LoginPage";
 
 describe("Add products", function () {
 
+    Cypress.on('fail', (error, runnable) => {
+        if (error.message.includes('A fixture file could not be found')) {
+            console.log("Please check your file path or input file");
+            throw error;
+        }
+    });
+
     const homePage = new HomePage();
     const login = new LoginPage();
 

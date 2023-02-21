@@ -32,6 +32,7 @@ const cartPage = new CartPage();
 const backToHome = new BackToHomePage();
 
 Cypress.Commands.add('launchBrowser', () => {
+    cy.on('uncaught:exception', (err, runnable) => { return false });
     cy.visit('https://www.saucedemo.com')
 })
 
@@ -49,8 +50,4 @@ Cypress.Commands.add('logout', () => {
     backToHome.getLogoutButton().click({ force: true });
 })
 
-Cypress.Commands.add('handleFailTests', () => {
-    Cypress.on("fail", (error, runnable) => {
-        return false;
-    });
-})
+

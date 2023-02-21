@@ -1,4 +1,5 @@
 export class CartPage {
+    
     getCart = "a.shopping_cart_link";
     getYourCard = '//span[contains(text(), "Your Cart")]';
     checkoutButton = '#checkout';

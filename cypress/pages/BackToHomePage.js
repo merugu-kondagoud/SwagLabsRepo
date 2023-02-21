@@ -5,13 +5,11 @@ export class BackToHomePage {
     burgerMenuButon = "#react-burger-menu-btn"
     logoutButton = "#logout_sidebar_link"
 
-    getBurgerMenuButton()
-    {
+    getBurgerMenuButton() {
         return cy.get(this.burgerMenuButon)
     }
 
-    getLogoutButton()
-    {
+    getLogoutButton() {
         return cy.get(this.logoutButton)
     }
 
