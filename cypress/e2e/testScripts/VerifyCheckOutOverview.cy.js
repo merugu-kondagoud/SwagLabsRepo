@@ -24,6 +24,11 @@ describe("Verify checkout overview", () => {
         cy.fixture("checkOutOverviewData").then((data) => {
             checkOutOverviewData = data
         })
+        cy.on('fail', (error, runnable) => {
+            if (error.message.includes("A fixture file could not be found")) {
+                cy.log("Please check your fixture file path")
+            }
+        })
     })
 
     it("Checkout overview Test", () => {

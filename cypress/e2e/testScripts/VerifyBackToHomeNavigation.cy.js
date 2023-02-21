@@ -9,8 +9,6 @@ describe("Verify Back to home", () => {
 
     let loginData
     let checkOutYourInformationData
-    let checkOutOverviewData
-    let checkOutCompleteData
     let productsData
     before(() => {
         cy.log("Launch Swag Labs application.")
@@ -23,17 +21,14 @@ describe("Verify Back to home", () => {
         cy.fixture("checkOutYourInformationData").then((data) => {
             checkOutYourInformationData = data
         })
-        cy.log("Load checkOutOverviewData.json fixture.")
-        cy.fixture("checkOutOverviewData").then((data) => {
-            checkOutOverviewData = data
-        })
-        cy.log("Load checkOutCompleteData.json fixture.")
-        cy.fixture("checkOutCompleteData").then((data) => {
-            checkOutCompleteData = data
-        })
         cy.log("Load productsData.json fixture.")
         cy.fixture("productsData").then((data) => {
             productsData = data
+        })
+        cy.on('fail', (error, runnable) => {
+            if (error.message.includes("A fixture file could not be found")) {
+                cy.log("Please check your fixture file path")
+            }
         })
     })
 

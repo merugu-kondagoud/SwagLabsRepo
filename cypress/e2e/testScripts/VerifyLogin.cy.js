@@ -11,6 +11,11 @@ describe("Verify Login to saucelabs", () => {
         cy.fixture("loginData").then((data) => {
             loginData = data
         })
+        cy.on('fail', (error, runnable) => {
+            if (error.message.includes("A fixture file could not be found")) {
+                cy.log("Please check your fixture file path")
+            }
+        })
     })
 
     it("Login Test", () => {

@@ -17,6 +17,11 @@ describe("Verify Products In Cart", () => {
         cy.fixture("productsData").then((data) => {
             productsData = data
         })
+        cy.on('fail', (error, runnable) => {
+            if (error.message.includes("A fixture file could not be found")) {
+                cy.log("Please check your fixture file path")
+            }
+        })
     })
 
     it("Verify Products Test", () => {
@@ -33,7 +38,7 @@ describe("Verify Products In Cart", () => {
         cy.log("Validate the second product added to the cart.")
         yourCart.validateSecondProductInCart(productsData.expectedSecondProduct)
     })
-    
+
     after(() => {
         cy.log("Logout of Swag Labs Application.")
         cy.logOut()

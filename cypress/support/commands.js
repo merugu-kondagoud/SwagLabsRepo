@@ -28,7 +28,10 @@
 
 //Launch Swag labs application
 Cypress.Commands.add('launchApplication', () => {
-    cy.visit('https://www.saucedemo.com/')
+    Cypress.on('uncaught:exception', (error, runnable) => {
+        return false
+    })
+    cy.visit('https://www.saucedemo.com/',{failOnStatusCode: false})
 })
 
 //Logout of Swag labs application

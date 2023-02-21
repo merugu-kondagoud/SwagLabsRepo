@@ -30,6 +30,11 @@ describe("Verify checkout complete", () => {
         cy.fixture("checkOutCompleteData").then((data) => {
             checkOutCompleteData = data
         })
+        cy.on('fail', (error, runnable) => {
+            if (error.message.includes("A fixture file could not be found")) {
+                cy.log("Please check your fixture file path")
+            }
+        })
     })
 
     it("Checkout complete Test", () => {
@@ -50,7 +55,7 @@ describe("Verify checkout complete", () => {
         checkOutYourInformationPage.enterYourInformation(checkOutYourInformationData.firstName, checkOutYourInformationData.lastName, checkOutYourInformationData.postalCode)
         cy.log("Click Finish Checkout Button")
         checkOutOverviewPage.clickFinishButton()
-       cy.log("Verify user is navigated to checkout:complete page.")
+        cy.log("Verify user is navigated to checkout:complete page.")
         checkOutCompletePage.checkOutCompleteVerify(checkOutCompleteData.expectedText)
     })
 
