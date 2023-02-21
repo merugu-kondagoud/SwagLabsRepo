@@ -3,7 +3,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run cypress-test || npm run posttest",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports ",
+    "pretest": "npm run clean:reports",
+    "test": "npm run pretest && npm run cypress-test || npm run posttest",
     "cypress-test": "npx cypress run --spec 'cypress/e2e/testScripts/*.js' --browser chrome --headed",
     "posttest": "npm run merge-reports && npm run generate-html-report",
     "merge-reports": "mochawesome-merge ./cypress/reports/*.json > ./report1.json",
