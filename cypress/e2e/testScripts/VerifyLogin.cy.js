@@ -2,20 +2,17 @@
 import LoginPage from "../../Pages/LoginPage";
 
 describe('TestSuite', function () {
-
     beforeEach(function () {
         cy.launchApplication();
-        cy.fixture('TestDat').then(function (data) {
-            this.data = data
+        cy.fixture('TestData').then(function (logindata) {
+            this.logindata = logindata
         })
     })
- it('Verify Login', function () {
-       
-       const hp = new LoginPage()
-        
-        hp.login(this.data.userName, this.data.password)
+    it('Verify Login', function () {
+        const login = new LoginPage()
+        cy.log("user login.")
+        login.login(this.logindata.userName, this.logindata.password)
     })
-    
 })
 
 

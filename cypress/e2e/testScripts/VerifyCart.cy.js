@@ -1,25 +1,24 @@
 import LoginPage from "../../Pages/LoginPage";
 import HomePage from "../../Pages/HomePage";
 import CartPage from "../../Pages/CartPage";
-describe("Test suite",function()
-{
-    const hpp=new HomePage()
-    const hp=new LoginPage()
-    const cp=new CartPage()
-    beforeEach(function ()
-    {
+describe("Test suite", function () {
+    const homepage = new HomePage()
+    const login = new LoginPage()
+    const cart = new CartPage()
+    beforeEach(function () {
         cy.launchApplication();
-        cy.fixture('TestDat').then( function(data) {
-            this.data=data})
-        
+        cy.fixture('TestData').then(function (logindata) {
+            this.logindata = logindata
         })
-        
-         it('VerifyCart',function()
-        {
-            hp.login(this.data.userName,this.data.password)
-            hpp.addTwoProducts()
-            cp.getCart().click()
-            cp.clickCheckOut().click()
-            
-             })
     })
+    it('Verify Cart', function () {
+        cy.log("user login.")
+        login.login(this.logindata.userName, this.logindata.password)
+        cy.log("Adding Two products to cart.")
+        homepage.addTwoProducts()
+        cy.log("click on cart.")
+        cart.getCart().click()
+        cy.log("click on checkout button.")
+        cart.getCheckOut().click()
+    })
+})

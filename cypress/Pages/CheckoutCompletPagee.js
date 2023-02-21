@@ -1,13 +1,9 @@
-class CheckoutCompletePage
-{
-    clickBack()
-    {
-        return cy.get('#back-to-products')
+class CheckoutCompletePage {
+    clickOnBack() {
+        return cy.get('#back-to-products').click()
     }
-    verifyBack()
-    {
-        return cy.get('.header_secondary_container')
+    verifyBackToHome() {
+        return cy.get('.header_secondary_container').should('be.be.visible')
     }
-    
 }
 export default CheckoutCompletePage;

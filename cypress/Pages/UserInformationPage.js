@@ -1,25 +1,18 @@
-class UserInformationPage
-{
-    enterFirstname()
-    {
+class UserInformationPage {
+    getFirstname() {
         return cy.get('#first-name')
-    
     }
-    enterLastname()
-    {
-        return cy.get('#last-name') 
+    getLastname() {
+        return cy.get('#last-name')
     }
-    enterZip()
-    {
+    getZip() {
         return cy.get('#postal-code')
     }
-clickContinue()
-{
-    return cy.get('#continue')
-}
-verifyCheckoutOverview()
-{
-    return cy.get('.header_secondary_container')
-}
+    getContinue() {
+        return cy.get('#continue')
+    }
+    getCheckoutOverview() {
+        return cy.get('.header_secondary_container')
+    }
 }
 export default UserInformationPage;

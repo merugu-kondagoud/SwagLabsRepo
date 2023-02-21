@@ -3,9 +3,8 @@
 
 class HomePage {
     validateHomepage() {
-        return cy.get('.app_logo')
+        return cy.get('.app_logo').should("be.visible")
     }
-
     addTwoProducts() {
 
         cy.get('div.inventory_item_label').each(($product, index, list) => {
@@ -16,14 +15,11 @@ class HomePage {
             if ($product.text().includes('Sauce Labs Bike Light')) {
                 cy.get('#add-to-cart-sauce-labs-bike-light').click()
             }
-
         })
     }
-
     validateCart() {
-        return cy.get('.shopping_cart_link')
+        return cy.get('.shopping_cart_link').should('contain', '2')
     }
 
 }
-
 export default HomePage;

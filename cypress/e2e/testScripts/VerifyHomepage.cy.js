@@ -2,29 +2,24 @@
 import HomePage from "../../Pages/HomePage";
 import LoginPage from "../../Pages/LoginPage";
 
-describe("Test suite",function()
-{
-    const hpp=new HomePage()
-    const hp=new LoginPage()
-    beforeEach(function ()
-    {
+describe("Test suite", function () {
+    const homepage = new HomePage()
+    const login = new LoginPage()
+    beforeEach(function () {
         cy.launchApplication();
-        cy.fixture('TestDat').then( function(data) {
-            this.data=data})
+        cy.fixture('TestData').then(function (logindata) {
+            this.logindata = logindata
         })
-
-
-    it('Verify Home page',function()
-    {
-    hp.login(this.data.userName,this.data.password)
-    //verifying Homepage
-    hpp.validateHomepage().should("be.visible")
-    //Adding products to the cart
-    hpp.addTwoProducts()
-    //verifing items count in the cart
-    hpp.validateCart().should('contain','2') 
     })
-
-    
+    it('Verify Home page', function () {
+        cy.log("user login.")
+        login.login(this.logindata.userName, this.logindata.password)
+        cy.log("Validating Homepage.")
+        homepage.validateHomepage()
+        cy.log("Adding two products.")
+        homepage.addTwoProducts()
+        cy.log("Item count in cart.")
+        homepage.validateCart()
+    })
 })
-    
+

@@ -3,46 +3,47 @@ import HomePage from "../../Pages/HomePage";
 import CartPage from "../../Pages/CartPage";
 import UserInformationPage from "../../Pages/UserInformationPage";
 import CheckoutOverviewPage from "../../Pages/CheckoutOverviewPage";
-describe("Test suite",function()
-{
-    const hpp=new HomePage()
-    const hp=new LoginPage()
-    const cp=new CartPage()
-    const up=new UserInformationPage()
-    const co=new CheckoutOverviewPage()
-    beforeEach(function ()
-    {
+describe("Test suite", function () {
+    const homepage = new HomePage()
+    const login = new LoginPage()
+    const cart = new CartPage()
+    const userinformation = new UserInformationPage()
+    const checkoutoverview = new CheckoutOverviewPage()
+    beforeEach(function () {
         cy.launchApplication();
-        cy.fixture('TestDat').then( function(data) {
-            this.data=data
+        cy.fixture('TestData').then(function (logindata) {
+            this.logindata = logindata
         })
-        cy.fixture('UserInformationData').then(function(data1) {
-            this.data1=data1
+        cy.fixture('UserInformationData').then(function (userinformation) {
+            this.userinformation = userinformation
         })
-        
-        cy.fixture('Quantity').then(function(data3){
-            this.data3=data3
-        })
-        
-        
-        
-        })
-        it('VerifyUserInformation',function()
-        {
-            hp.login(this.data.userName,this.data.password)
-            hpp.addTwoProducts()
-            cp.getCart().click()
-            cp.clickCheckOut().click()
-    
-            up.enterFirstname().type(this.data1.Firstname)
-            up.enterLastname().type(this.data1.Latname)
-            up.enterZip().type(this.data1.Zip)
-            up.clickContinue().click()
-           
-            co.getQuantity(this.data3.Qty)
-            co.getTotal()
-            co.clickFinish().click()
-            co.verifyCheckoutcomplte().should('have.text','THANK YOU FOR YOUR ORDER')
-            
+        cy.fixture('Quantity').then(function (quantity) {
+            this.quantity = quantity
         })
     })
+    it('Verify checkout overview', function () {
+        cy.log("user login.")
+        login.login(this.logindata.userName, this.logindata.password)
+        cy.log("Adding two products.")
+        homepage.addTwoProducts()
+        cy.log("click on cart.")
+        cart.getCart().click()
+        cy.log("click on checkout button.")
+        cart.getCheckOut().click()
+        cy.log("Enter Username.")
+        userinformation.getFirstname().type(this.userinformation.Firstname)
+        cy.log("Enter Latname.")
+        userinformation.getLastname().type(this.userinformation.Latname)
+        cy.log("Enter Zip.")
+        userinformation.getZip().type(this.userinformation.Zip)
+        cy.log("Clicking continue button.")
+        userinformation.getContinue().click()
+        cy.log("get the quantiy")
+        checkoutoverview.getQuantity(this.quantity.Qty)
+        cy.log("Calculating total price")
+        checkoutoverview.getTotalPrice()
+        cy.log("Clicking finish button")
+        checkoutoverview.getFinish().click()
+        cy.log("Validating checkout complete page.")
+    })
+})
