@@ -20,6 +20,13 @@ const tax = 3.20
 
 describe('My SwagLab Test', function () {
     beforeEach(function () {
+        cy.on("fail", (e, runnable) => {
+            if (
+                e.message.includes("A fixture file could not be found")) {
+                cy.log("Please check your file path or input file");
+                throw e;
+            }
+        })
         cy.fixture('login').then(function (loginDetails) {
             this.loginDetails = loginDetails
         })
