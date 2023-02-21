@@ -14,6 +14,12 @@ describe("Complete Page suite", () => {
     const checkoutOverview = new Checkout_OverviewPage()
     const completePage = new Checkout_Completepage()
 
+    Cypress.on("fail", (e, runnable) => {
+        if (e.message.includes("A fixture file could not be found")) {
+            console.log("**please check your file path**")
+        }
+    })
+
     beforeEach(function () {
         cy.launchApplication()
         cy.fixture("LoginCredentialsTestData").then(function (loginDetails) { this.loginDetails = loginDetails })

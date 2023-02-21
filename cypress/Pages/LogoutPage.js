@@ -1,19 +1,19 @@
 export class LogoutPage {
 
-    Burger_Menu = '#react-burger-menu-btn'
-    Logout = 'Logout'
-    Swaglabs_Logo = '.bot_column'
+    burgerMenu = '#react-burger-menu-btn'
+    logout = 'Logout'
+    swagLabsLogo = '.bot_column'
 
-    getClick_BurgerMenu() {
-        cy.get(this.Burger_Menu).click({ force: true })
+    clickBurgerMenu() {
+        return cy.get(this.burgerMenu).click({ force: true })
     }
 
-    getClick_LogoutOption() {
-        cy.contains(this.Logout).should('be.visible').click({ force: true })
+    clickLogoutOption() {
+        return cy.contains(this.logout).should('be.visible').click({ force: true })
     }
 
-    getValidate_SwagLogo() {
-        cy.get(this.Swaglabs_Logo).should('be.visible')
+    validateSwagLogo() {
+        return cy.get(this.swagLabsLogo).should('be.visible')
     }
 
 }

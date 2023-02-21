@@ -15,7 +15,7 @@ export class InformationPage {
         cy.get(this.lastName).type(LastName)
         cy.get(this.ZIP_Code).type(ZIPcode)
     }
-    
+
     clickContinue() {
         return cy.get(this.continueButton).click()
     }

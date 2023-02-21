@@ -8,7 +8,7 @@ export class Checkout_OverviewPage {
     finishButton = '#finish'
 
     validateCheckoutOverview(ExpectedText) {
-        cy.get(this.overViewLogo).should('have.text', ExpectedText)
+        return cy.get(this.overViewLogo).should('have.text', ExpectedText)
     }
 
     validateProductQuantity(noOfQuantity) {
@@ -54,6 +54,6 @@ export class Checkout_OverviewPage {
     }
 
     clickFinishButton() {
-        cy.get(this.finishButton).click()
+        return cy.get(this.finishButton).click()
     }
 }

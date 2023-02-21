@@ -6,6 +6,12 @@ describe("product page suite", () => {
 
     const productPage = new ProductPage()
 
+    Cypress.on("fail", (e, runnable) => {
+        if (e.message.includes("A fixture file could not be found")) {
+            console.log("**please check your file path**")
+        }
+    })
+
     beforeEach(function () {
         cy.launchApplication()
         cy.fixture("LoginCredentialsTestData").then(function (loginDetails) { this.loginDetails = loginDetails })

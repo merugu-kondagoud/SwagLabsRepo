@@ -28,9 +28,9 @@ Cypress.Commands.add('validateProduct', (productName) => {
 
 
 Cypress.Commands.add('Logout', () => {
-    logout.getClick_BurgerMenu()
-    logout.getClick_LogoutOption()
-    logout.getValidate_SwagLogo()
+    logout.clickBurgerMenu()
+    logout.clickLogoutOption()
+    logout.validateSwagLogo()
 })
 
 
