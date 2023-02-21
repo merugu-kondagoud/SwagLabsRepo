@@ -1,9 +1,9 @@
 class CartPage {
-    getCart() {
-        return cy.get('.shopping_cart_link')
+    clickCart() {
+        return cy.get('.shopping_cart_link').click()
     }
-    getCheckOut() {
-        return cy.get('#checkout')
+    clickCheckOut() {
+        return cy.get('#checkout').click()
     }
 }
 export default CartPage;
