@@ -3,10 +3,9 @@ export class LoginPage {
     userName = "#user-name";
     password = "#password";
     loginButton = "#login-button";
-    botlogo = ".bot_column"
 
-    validateloginPageProperties() {
-        cy.get(this.botlogo).should("be.visible")
+    validateloginButton() {
+        cy.get(this.loginButton).should("be.visible")
     }
 
     login(userName, password) {

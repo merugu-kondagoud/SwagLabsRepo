@@ -6,7 +6,7 @@ export class CheckoutPage {
     continueButton = "#continue"
     pageName = '//span[contains(text(), "Your Information")]'
 
-    validateLandingPage(expectedText) {
+    validateCheckoutPageTitle(expectedText) {
         cy.xpath(this.pageName).should("have.text", expectedText)
     }
 

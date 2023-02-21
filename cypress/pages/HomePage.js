@@ -4,18 +4,18 @@ export class HomePage {
     labelOfProducts = '.inventory_item_label';
     inventoryItemName = '.inventory_item_name';
 
-    validateHomePageProperties() {
+    validateHomePageTitle() {
         cy.xpath(this.product).should("have.text", "Products");
     }
 
     addproduct(productName) {
-        cy.get(this.labelOfProducts).each(($el, index, $list) => {
-            const textproduct = $el.find(this.inventoryItemName).text()
+        cy.get(this.labelOfProducts).each((itemTitle, index) => {
+            const textProduct = itemTitle.find(this.inventoryItemName).text()
             for (let element of productName) {
-                if (textproduct == (element)) {
-                    let addCartselector = "#add-to-cart-" + textproduct.replace(/\s/gm, "-").toLowerCase();
-                    console.log(addCartselector);
-                    cy.get(addCartselector).click();
+                if (textProduct == (element)) {
+                    let addCartSelector = "#add-to-cart-" + textProduct.replace(/\s/gm, "-").toLowerCase();
+                    console.log(addCartSelector);
+                    cy.get(addCartSelector).click();
                 }
             }
         })

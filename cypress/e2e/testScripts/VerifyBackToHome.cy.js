@@ -11,13 +11,6 @@ import { BackToHomePage } from '../../pages/BackToHomePage';
 
 describe("Navigate back to home page", function () {
 
-    Cypress.on('fail', (error, runnable) => {
-        if (error.message.includes('A fixture file could not be found')) {
-            console.log("Please check your file path or input file");
-            throw error;
-        }
-    });
-
     const loginPage = new LoginPage()
     const homePage = new HomePage()
     const shoppingCartContainer = new CartPage()
@@ -30,26 +23,28 @@ describe("Navigate back to home page", function () {
         cy.log("Launch Swag Labs Application.");
         cy.launchBrowser();
 
-        cy.log("Drive data form JSON file.");
-        cy.fixture('LoginTestData').then(function (LoginData) { this.LoginData = LoginData; });
+        cy.log("Reading data form JSON file.");
+        cy.fixture('LoginTestData').then(function (loginData) { this.loginData = loginData; });
         cy.fixture('HomeTestData').then(function (homePageData) { this.homePageData = homePageData; });
         cy.fixture('CheckoutTestData').then(function (checkoutPageData) { this.checkoutPageData = checkoutPageData; });
         cy.fixture('CheckoutOverviewTestData').then(function (overviewPageData) { this.overviewPageData = overviewPageData; });
         cy.fixture('CheckoutCompleteTestData').then(function (completePageData) { this.completePageData = completePageData; });
-        cy.fixture('BackToHome').then(function (ProductPageData) { this.ProductPageData = ProductPageData; });
+        cy.fixture('BackToHome').then(function (productPageData) { this.productPageData = productPageData; });
     })
 
-    afterEach(function () {
-        cy.log("Logout Swag Labs application.");
-        cy.logout();
-    })
+    Cypress.on('fail', (error, runnable) => {
+        if (error.message.includes('A fixture file could not be found')) {
+            console.log("Please check your file path or input file");
+            throw error;
+        }
+    });
 
     it("Navigate back to home page", function () {
         cy.log("Login to the application using valida credentials.");
-        loginPage.login(this.LoginData.userName, this.LoginData.password);
+        loginPage.login(this.loginData.userName, this.loginData.password);
 
         cy.log("Add products to the cart.");
-        homePage.addproduct(this.homePageData.productname);
+        homePage.addproduct(this.homePageData.productName);
 
         cy.log("Click on the cart icon.");
         shoppingCartContainer.clickCart();
@@ -70,6 +65,11 @@ describe("Navigate back to home page", function () {
         completePage.clickBackHome();
 
         cy.log("Validate product page title.")
-        productPage.validateProductPageTitle(this.ProductPageData.productText);
+        productPage.validateProductPageTitle(this.productPageData.productText);
+    })
+
+    afterEach(function () {
+        cy.log("Logout Swag Labs application.");
+        cy.logout();
     })
 })

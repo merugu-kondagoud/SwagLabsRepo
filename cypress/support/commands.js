@@ -27,7 +27,6 @@
 import { CartPage } from "../pages/CartPage"
 import { BackToHomePage } from "../pages/BackToHomePage";
 
-
 const cartPage = new CartPage();
 const backToHome = new BackToHomePage();
 
@@ -37,10 +36,10 @@ Cypress.Commands.add('launchBrowser', () => {
 })
 
 Cypress.Commands.add('validateYourCart', (productName) => {
-    cartPage.getCartLabel().each((item, index, $list) => {
-        const textproduct = item.find('.inventory_item_name').text()
-        if (textproduct.includes(productName)) {
-            expect(textproduct).to.be.equal(productName)
+    cartPage.getCartLabel().each((item, index) => {
+        const textProduct = item.find('.inventory_item_name').text()
+        if (textProduct.includes(productName)) {
+            expect(textProduct).to.be.equal(productName)
         }
     })
 })

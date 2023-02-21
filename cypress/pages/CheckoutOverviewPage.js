@@ -1,15 +1,15 @@
 export class CheckoutOverviewPage {
 
-    overviewPageProperty = ".header_secondary_container"
+    overviewPageTitle = ".header_secondary_container"
     itemPrice = ".inventory_item_price"
     totalPrice = ".summary_total_label"
     finishButton = '#finish'
     cartItem = '.cart_item'
     cartQuantity = '.cart_quantity'
-    totalWithoutTax = ".summary_tax_label"
+    totalPriceWithoutTax = ".summary_tax_label"
 
     validateProductQuantity(productQuantity) {
-        cy.get(this.cartItem).each((items, index, $list) => {
+        cy.get(this.cartItem).each((items, index) => {
             const textproduct = items.find(this.cartQuantity).text()
 
             if (textproduct.includes(productQuantity)) {
@@ -53,7 +53,7 @@ export class CheckoutOverviewPage {
         cy.get(this.finishButton).click()
     }
 
-    validateOverviewPageProperties(expectedText) {
-        cy.get(this.overviewPageProperty).should("have.text", expectedText)
+    validateOverviewPageTitle(expectedText) {
+        cy.get(this.overviewPageTitle).should("have.text", expectedText)
     }
 }

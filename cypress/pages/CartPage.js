@@ -1,7 +1,7 @@
 export class CartPage {
     
-    getCart = "a.shopping_cart_link";
-    getYourCard = '//span[contains(text(), "Your Cart")]';
+    shoppingCartLink = "a.shopping_cart_link";
+    CardTitle = '//span[contains(text(), "Your Cart")]';
     checkoutButton = '#checkout';
 
     getCartLabel() {
@@ -9,11 +9,11 @@ export class CartPage {
     }
 
     clickCart() {
-        cy.get(this.getCart).click();
+        cy.get(this.shoppingCartLink).click();
     }
 
-    validateYourCartPageProperties(expectedText) {
-        cy.xpath(this.getYourCard).should("have.text", expectedText)
+    validateCartPageTitle(expectedText) {
+        cy.xpath(this.CardTitle).should("have.text", expectedText)
     }
 
     validateYourCartProducts(productName) {
