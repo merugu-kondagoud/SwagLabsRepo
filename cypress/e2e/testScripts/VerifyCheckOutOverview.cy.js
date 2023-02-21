@@ -26,7 +26,7 @@ describe("Verify checkout overview", () => {
         })
         cy.on('fail', (error, runnable) => {
             if (error.message.includes("A fixture file could not be found")) {
-                cy.log("Please check your fixture file path")
+                console.log("Please check your fixture file path")
             }
         })
     })

@@ -14,7 +14,7 @@ describe("Verify Back to home", () => {
         cy.log("Launch Swag Labs application.")
         cy.launchApplication()
         cy.log("Load loginData.json fixture.")
-        cy.fixture("loginData").then((data) => {
+        cy.fixture("loginDat").then((data) => {
             loginData = data
         })
         cy.log("Load checkOutYourInformationData.json fixture.")
@@ -27,7 +27,7 @@ describe("Verify Back to home", () => {
         })
         cy.on('fail', (error, runnable) => {
             if (error.message.includes("A fixture file could not be found")) {
-                cy.log("Please check your fixture file path")
+                console.log("Please check your fixture file path")
             }
         })
     })
