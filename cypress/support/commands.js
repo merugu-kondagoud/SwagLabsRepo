@@ -24,7 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-//Launch Swag labs application 
-Cypress.Commands.add('launchBrowser', () => { 
+
+Cypress.Commands.add('launchApplication', () => {
+    cy.on('uncaught:exception', (err, runnable) => {
+        return false
+    })
     cy.visit('https://www.saucedemo.com/')
 })
+Cypress.Commands.add('logoutFromApplication', () => {
+    cy.get("#react-burger-menu-btn").click()
+    cy.get("#logout_sidebar_link").click()
+
+})
+// Cypress.Commands.overwrite('log', (subject, message) => cy.task('log', message));

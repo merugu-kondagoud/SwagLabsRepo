@@ -18,3 +18,16 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+Cypress.on("fail", (error, runnable) => {
+    if (
+        error.message.includes("A fixture file could not be found")) {
+        console.log("message", error.message);
+        cy.log("File not exist, Please check your file path.");
+        throw error;
+    }
+})
+Cypress.on('fail', (error, runnable) => {
+    if (error.message.includes('buttondoestexist')) {
+        throw error
+    }
+})
