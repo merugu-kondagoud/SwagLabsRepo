@@ -1,6 +1,3 @@
-
-
-
 class HomePage {
     validateHomepage() {
         return cy.get('.app_logo').should("be.visible")

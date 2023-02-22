@@ -3,7 +3,7 @@ import HomePage from "../../Pages/HomePage";
 import CartPage from "../../Pages/CartPage";
 import UserInformationPage from "../../Pages/UserInformationPage";
 import CheckoutOverviewPage from "../../Pages/CheckoutOverviewPage";
-describe("Test suite", function () {
+describe("Checkout Overview", function () {
     const homepage = new HomePage()
     const login = new LoginPage()
     const cart = new CartPage()
@@ -45,5 +45,8 @@ describe("Test suite", function () {
         cy.log("Clicking finish button")
         checkoutoverview.getFinish().click()
         cy.log("Validating checkout complete page.")
+    })
+    afterEach(function () {
+        cy.logoutFromApplication()
     })
 })

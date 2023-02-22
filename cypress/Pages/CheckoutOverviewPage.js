@@ -1,6 +1,4 @@
 class CheckoutOverviewPage {
-    
-
     getFinish() {
         return cy.get('#finish')
     }
@@ -8,8 +6,8 @@ class CheckoutOverviewPage {
         return cy.get('h2[class=complete-header]').should('have.text', 'THANK YOU FOR YOUR ORDER')
     }
     getQuantity(Qty) {
-        cy.get('.cart_quantity').each(($e1, index, list) => {
-            const text1 = $e1.text()
+        cy.get('.cart_quantity').each(($quantityElement, index, list) => {
+            const text1 = $quantityElement.text()
             expect(text1).to.be.equal(Qty)
         })
     }

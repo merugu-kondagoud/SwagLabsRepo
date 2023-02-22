@@ -2,7 +2,7 @@
 import HomePage from "../../Pages/HomePage";
 import LoginPage from "../../Pages/LoginPage";
 
-describe("Test suite", function () {
+describe("HomePage", function () {
     const homepage = new HomePage()
     const login = new LoginPage()
     beforeEach(function () {
@@ -20,6 +20,9 @@ describe("Test suite", function () {
         homepage.addTwoProducts()
         cy.log("Item count in cart.")
         homepage.validateCart()
+    })
+    afterEach(function () {
+        cy.logoutFromApplication()
     })
 })
 

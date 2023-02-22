@@ -1,18 +1,12 @@
-class LoginPage
-{
-    getUsername()
-    {
+class LoginPage {
+    getUsername() {
         return cy.get('#user-name')
-
     }
-    getPassword()
-    {
+    getPassword() {
         return cy.get('#password')
-
     }
-    getClick()
-    {
-       return cy.get('#login-button')
+    getClick() {
+        return cy.get('#login-button')
     }
     login(userName, password) {
         this.getUsername().type(userName)

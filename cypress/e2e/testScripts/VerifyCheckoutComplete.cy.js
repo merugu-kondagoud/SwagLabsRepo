@@ -5,7 +5,7 @@ import UserInformationPage from "../../Pages/UserInformationPage";
 import CheckoutOverviewPage from "../../Pages/CheckoutOverviewPage";
 import CheckoutCompletePage from "../../Pages/CheckoutCompletPagee";
 
-describe("Test suite", function () {
+describe("Checkout complete", function () {
     const homepage = new HomePage()
     const login = new LoginPage()
     const cart = new CartPage()
@@ -46,8 +46,8 @@ describe("Test suite", function () {
         checkoutcomplete.verifyBackToHome()
     })
     afterEach(function () {
-        cy.get('#react-burger-menu-btn').click()
-        cy.get('#logout_sidebar_link').click()
+        cy.logoutFromApplication()
     })
 })
+
 

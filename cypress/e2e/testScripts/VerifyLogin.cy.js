@@ -1,7 +1,7 @@
 ///<reference types="cypress"/>
 import LoginPage from "../../Pages/LoginPage";
 
-describe('TestSuite', function () {
+describe('Login', function () {
     beforeEach(function () {
         cy.launchApplication();
         cy.fixture('TestData').then(function (logindata) {
@@ -12,6 +12,9 @@ describe('TestSuite', function () {
         const login = new LoginPage()
         cy.log("user login.")
         login.login(this.logindata.userName, this.logindata.password)
+    })
+    afterEach(function () {
+        cy.logoutFromApplication()
     })
 })
 

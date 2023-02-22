@@ -1,7 +1,7 @@
 import LoginPage from "../../Pages/LoginPage";
 import HomePage from "../../Pages/HomePage";
 import CartPage from "../../Pages/CartPage";
-describe("Test suite", function () {
+describe("Cart", function () {
     const homepage = new HomePage()
     const login = new LoginPage()
     const cart = new CartPage()
@@ -20,5 +20,8 @@ describe("Test suite", function () {
         cart.clickCart()
         cy.log("click on checkout button.")
         cart.clickCheckOut()
+    })
+    afterEach(function () {
+        cy.logoutFromApplication()
     })
 })
