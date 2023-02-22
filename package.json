@@ -3,18 +3,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "rimraf -r ./cypress/reports/*.json ",
+
     "test": "npm run cypress-test || npm run posttest",
-    "cypress-test": "cypress run --browser chrome --headed",
+    "cypress-test": "npx cypress run --spec 'cypress/e2e/testScripts/*.js' --browser chrome --headed",
     "posttest": "npm run merge-reports && npm run generate-html-report",
     "merge-reports": "mochawesome-merge ./cypress/reports/*.json > ./report1.json",
     "generate-html-report": "marge ./report1.json --reportDir ./cypress/reports"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.5.1",
+    "cypress": "^12.6.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-xpath": "^2.0.1",
     "mochawesome": "^7.1.3",
