@@ -1,13 +1,13 @@
 export class Checkout_Completepage {
 
-    completeLogo = '.title'
+    checkoutCompleteTitle = '.title'
     thanksText = '.complete-header'
 
-    validateCompleteLabel(logo) {
-        return cy.get(this.completeLogo).should('have.text', logo)
+    validateCompleteTitle(title) {
+        return cy.get(this.checkoutCompleteTitle).should('have.text', title)
     }
 
-    validateThanksMessage(expectedText) {
+    validateOrderCompleteMessage(expectedText) {
         return cy.get(this.thanksText).should('have.text', expectedText)
     }
 

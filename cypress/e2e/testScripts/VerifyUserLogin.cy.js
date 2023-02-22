@@ -14,6 +14,7 @@ describe("Login suite", () => {
 
     beforeEach(function () {
         cy.launchApplication()
+        cy.log("Reading data from json file")
         cy.fixture("LoginCredentialsTestData.json").then(function (loginDetails) { this.loginDetails = loginDetails })
         cy.fixture("ProductPageTestData").then(function (productDetails) { this.productDetails = productDetails })
     })
@@ -25,9 +26,11 @@ describe("Login suite", () => {
 
     it("verify user navigated to products page", function () {
 
+        cy.log("Verify Login.")
         cy.Login(this.loginDetails.userName, this.loginDetails.password)
-        productPage.validateProductPage(this.productDetails.successMessage)
-        cy.log("Logged in successfully and navigated to products page.")
+        
+        cy.log("Verify user navigate to product page.")
+        productPage.validateProductTitle(this.productDetails.productTitle)
 
     })
 })

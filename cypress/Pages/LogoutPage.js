@@ -2,7 +2,7 @@ export class LogoutPage {
 
     burgerMenu = '#react-burger-menu-btn'
     logout = 'Logout'
-    swagLabsLogo = '.bot_column'
+    swagLabsBot = '.bot_column'
 
     clickBurgerMenu() {
         return cy.get(this.burgerMenu).click({ force: true })
@@ -13,7 +13,7 @@ export class LogoutPage {
     }
 
     validateSwagLogo() {
-        return cy.get(this.swagLabsLogo).should('be.visible')
+        return cy.get(this.swagLabsBot).should('be.visible')
     }
 
 }

@@ -1,13 +1,13 @@
 export class ProductPage {
 
-    productLogo = 'Products'
+    productTitle = 'Products'
     productLabel = '.inventory_item_label'
     productName = 'div.inventory_item_name'
-    cartLogo = '.shopping_cart_link'
+    addCartButton = '.shopping_cart_link'
 
 
-    validateProductPage(Product) {
-        cy.contains(this.productLogo).then(function (productElement) {
+    validateProductTitle(Product) {
+        cy.contains(this.productTitle).then(function (productElement) {
             const productText = productElement.text()
             expect(productText).to.equal(Product)
             cy.log("Logged in successfully")
@@ -28,7 +28,7 @@ export class ProductPage {
     }
 
     clickCartButton() {
-        return cy.get(this.cartLogo).click()
+        return cy.get(this.addCartButton).click()
     }
 
 }

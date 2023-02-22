@@ -7,7 +7,7 @@ export class Checkout_OverviewPage {
     totalItemPrice = '.summary_total_label'
     finishButton = '#finish'
 
-    validateCheckoutOverview(ExpectedText) {
+    validateCheckoutOverviewTitle(ExpectedText) {
         return cy.get(this.overViewLogo).should('have.text', ExpectedText)
     }
 
@@ -25,12 +25,12 @@ export class Checkout_OverviewPage {
 
     validateTotalPrice() {
         var totalProductPrice = 0
-        var sumOfPricewithTax = 0
+        var priceWithTax = 0
         cy.get(this.productPrice).each((priceElement, index, $list) => {
             const priceText = priceElement.text()
             var price1 = priceText.split("$")
             price1 = price1[1].trim()
-            cy.log(price1)
+            cy.log("Price", price1)
             totalProductPrice = Number(totalProductPrice) + Number(price1)
 
         }).then(function () {
@@ -41,15 +41,15 @@ export class Checkout_OverviewPage {
             var taxPrice = taxText.split("$")
             taxPrice = taxPrice[1].trim()
             cy.log(taxPrice)
-            sumOfPricewithTax = Number(taxPrice) + Number(totalProductPrice)
-            cy.log(sumOfPricewithTax)
+            priceWithTax = Number(taxPrice) + Number(totalProductPrice)
+            cy.log(priceWithTax)
         })
         cy.get(this.totalItemPrice).then(function (totalPriceElement) {
             const totalItemText = totalPriceElement.text()
             var totalPrice = totalItemText.split("$")
             totalPrice = totalPrice[1].trim()
             cy.log(totalPrice)
-            expect(Number(totalPrice)).to.be.equal(Number(sumOfPricewithTax))
+            expect(Number(totalPrice)).to.be.equal(Number(priceWithTax))
         })
     }
 

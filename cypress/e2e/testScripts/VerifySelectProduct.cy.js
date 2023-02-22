@@ -14,6 +14,7 @@ describe("product page suite", () => {
 
     beforeEach(function () {
         cy.launchApplication()
+        cy.log("Reading data from json file")
         cy.fixture("LoginCredentialsTestData").then(function (loginDetails) { this.loginDetails = loginDetails })
         cy.fixture("ProductPageTestData").then(function (productDetails) { this.productDetails = productDetails })
     })
@@ -25,13 +26,13 @@ describe("product page suite", () => {
 
     it("Verify user can select multiple products", function () {
 
+        cy.log("Verify login.")
         cy.Login(this.loginDetails.userName, this.loginDetails.password)
-        cy.log("User logged in successfully.")
 
-        productPage.validateProductPage(this.productDetails.successMessage)
+        cy.log("Selecting multiple products in the product page.")
+        productPage.validateProductTitle(this.productDetails.productTitle)
         productPage.clickProducts(this.productDetails.productName)
         productPage.clickCartButton()
-        cy.log("Multiple products has been selected by randomly.")
 
     })
 })

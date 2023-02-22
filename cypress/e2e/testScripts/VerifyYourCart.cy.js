@@ -16,6 +16,7 @@ describe("Your Cart page suite", () => {
 
     beforeEach(function () {
         cy.launchApplication()
+        cy.log("Reading data from json file")
         cy.fixture("LoginCredentialsTestData").then(function (loginDetails) { this.loginDetails = loginDetails })
         cy.fixture("ProductPageTestData").then(function (productDetails) { this.productDetails = productDetails })
         cy.fixture("YourCartTestData").then(function (yourcartDetails) { this.yourcartDetails = yourcartDetails })
@@ -28,17 +29,17 @@ describe("Your Cart page suite", () => {
 
     it("Validating selected products are present in the Your cart", function () {
 
+        cy.log("Verify login.")
         cy.Login(this.loginDetails.userName, this.loginDetails.password)
-        cy.log("Logged in successfully.")
 
-        productPage.validateProductPage(this.productDetails.successMessage)
+        cy.log("Selecting multiple products in the product page.")
+        productPage.validateProductTitle(this.productDetails.productTitle)
         productPage.clickProducts(this.productDetails.productName)
         productPage.clickCartButton()
-        cy.log("Multiple product has been selected by randomly.")
 
-        yourcartPage.validateCheckout(this.yourcartDetails.yourCartLogo)
+        cy.log("Validating selected products are listed in the cart page.")
+        yourcartPage.validateCheckoutTitle(this.yourcartDetails.yourCartTitle)
         yourcartPage.validateYourCartProducts(this.productDetails.productName)
         yourcartPage.clickCheckout()
-        cy.log("Selected products are listed in the Cart page.")
     })
 })

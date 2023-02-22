@@ -1,10 +1,10 @@
 export class YourCartPage {
 
-    yourCartLogo = 'Your Cart'
+    yourCartTitle = 'Your Cart'
     checkoutButton = '#checkout'
 
-    validateCheckout(Logo) {
-        return cy.contains(this.yourCartLogo).should('have.text', Logo)
+    validateCheckoutTitle(title) {
+        return cy.contains(this.yourCartTitle).should('have.text', title)
     }
 
     validateYourCartProducts(productName) {
