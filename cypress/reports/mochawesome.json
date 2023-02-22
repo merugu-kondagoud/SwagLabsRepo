@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-22T09:21:13.504Z",
+    "end": "2023-02-22T09:21:26.831Z",
+    "duration": 13327,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7d3f8111-34fb-4741-9d11-54a1592387b9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\testScripts\\VerifyBackToHome.cy.js",
+      "file": "cypress\\e2e\\testScripts\\VerifyBackToHome.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "02533aeb-bc91-41fe-afb0-3d89b3ef6ef9",
+          "title": "Back to HomePage suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verifying user return back to product page by clicking on back to home button",
+              "fullTitle": "Back to HomePage suite Verifying user return back to product page by clicking on back to home button",
+              "timedOut": null,
+              "duration": 8695,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log(\"verify login.\");\ncy.Login(this.loginDetails.userName, this.loginDetails.password);\ncy.log(\"Selecting multiple products in the product page.\");\nproductPage.validateProductTitle(this.productDetails.productTitle);\nproductPage.clickProducts(this.productDetails.productName);\nproductPage.clickCartButton();\ncy.log(\"Validating selected products are listed in the cart page.\");\nyourcartPage.validateCheckoutTitle(this.yourcartDetails.yourCartTitle);\nyourcartPage.validateYourCartProducts(this.productDetails.productName);\nyourcartPage.clickCheckout();\ncy.log(\"Providing user information in the checkout information page.\");\ninformationPage.validateCheckoutInformationTitle(this.userInfoDetails.checkoutInformationTitle);\ninformationPage.getInformation(this.userInfoDetails.firstName, this.userInfoDetails.lastName, this.userInfoDetails.zipCode);\ninformationPage.clickContinue();\ncy.log(\"Validating total product quantity and total item price.\");\ncheckoutOverview.validateCheckoutOverviewTitle(this.checkoutDetails.checkoutOverviewTitle);\ncheckoutOverview.validateProductQuantity(this.checkoutDetails.productQuantity);\ncheckoutOverview.validateTotalPrice();\ncheckoutOverview.clickFinishButton();\ncy.log(\"Validating order complete message.\");\ncompletePage.validateCompleteTitle(this.orderCompleteDetails.checkoutCompleteTitle);\ncompletePage.validateOrderCompleteMessage(this.orderCompleteDetails.completeOrderMessage);\ncy.log(\"Validating user return back to product page.\");\nbackHome.clickBackButton();\nbackHome.validateProductTitle(this.productDetails.productTitle);",
+              "err": {},
+              "uuid": "0f5df91c-cb20-4da2-813c-05380b7e112e",
+              "parentUUID": "02533aeb-bc91-41fe-afb0-3d89b3ef6ef9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0f5df91c-cb20-4da2-813c-05380b7e112e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8695,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "chats": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "video": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
