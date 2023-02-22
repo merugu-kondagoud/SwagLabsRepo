@@ -10,15 +10,8 @@ const cartPage = new CartPage()
 const checkOutPage = new CheckOutPage()
 const checkOutOverviewPage = new CheckOutOverviewPage()
 
-describe('My SwagLab Test', function () {
+describe('Verify Checkout Test', function () {
     beforeEach(function () {
-        cy.on("fail", (e, runnable) => {
-            if (
-                e.message.includes("A fixture file could not be found")) {
-                cy.log("Please check your file path or input file");
-                throw e;
-            }
-        })
         cy.fixture('login').then(function (loginDetails) {
             this.loginDetails = loginDetails
         })
@@ -41,10 +34,10 @@ describe('My SwagLab Test', function () {
         cy.launchApplication()
     })
 
-    it('Verify checkout details are correct', function () {
+    it('Verify checkout details', function () {
         cy.log("Logging in to Sauce demo.")
         loginPage.login(this.loginDetails.username, this.loginDetails.password)
-        cy.log("Checking Login is success")
+        cy.log("verifying Login is success")
         productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
         cy.log("Adding two products to cart")
         productPage.productsList().each(($product, productIndex, $productList) => {
@@ -55,13 +48,13 @@ describe('My SwagLab Test', function () {
         })
         cy.log("Clicking on cart badge")
         productPage.addToCart()
-        cy.log("Checking Checkout Page is displayed")
+        cy.log("verifying Checkout Page is displayed")
         cartPage.getPageTitle().should("have.text", this.cartDetails.cartPageText)
-        cy.log("Checking two items added in the cart")
+        cy.log("verifying two items added in the cart")
         cartPage.listOfProductsAdded().should("have.text", this.cartDetails.listOfProductsAdded)
         cy.log("Clicking on checkout")
         cartPage.checkout()
-        cy.log("Checking CheckoutOverview Page is displayed")
+        cy.log("verifying CheckoutOverview Page is displayed")
         checkOutPage.getPageTitle().should("have.text", this.checkOutDetails.checkOutPageText)
         cy.log("Entering Firstname")
         checkOutPage.firstName().type(this.checkOutDetails.firstName)
@@ -71,7 +64,7 @@ describe('My SwagLab Test', function () {
         checkOutPage.postalCode().type(this.checkOutDetails.postalCode)
         cy.log("Clicking on continue")
         checkOutPage.continue()
-        cy.log("Checking checkout overview page is displayed")
+        cy.log("verifying checkout overview page is displayed")
         checkOutOverviewPage.getPageTitle().should("have.text", this.checkOutOverviewDetails.checkOutOverviewPageText)
     })
 

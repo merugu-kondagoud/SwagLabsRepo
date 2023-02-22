@@ -18,15 +18,8 @@ var priceOfSecondItem
 var sum
 const tax = 3.20
 
-describe('My SwagLab Test', function () {
+describe('Verify Checkout Overview Test', function () {
     beforeEach(function () {
-        cy.on("fail", (e, runnable) => {
-            if (
-                e.message.includes("A fixture file could not be found")) {
-                cy.log("Please check your file path or input file");
-                throw e;
-            }
-        })
         cy.fixture('login').then(function (loginDetails) {
             this.loginDetails = loginDetails
         })
@@ -55,7 +48,7 @@ describe('My SwagLab Test', function () {
 
         cy.log("Logging in to Sauce demo.")
         loginPage.login(this.loginDetails.username, this.loginDetails.password)
-        cy.log("Checking Login is success")
+        cy.log("verifying Login is success")
         productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
         cy.log("Adding two products to cart")
         productPage.productsList().each(($product, productIndex, $productList) => {
@@ -66,13 +59,13 @@ describe('My SwagLab Test', function () {
         })
         cy.log("Clicking on cart badge")
         productPage.addToCart()
-        cy.log("Checking Checkout Page is displayed")
+        cy.log("verifying Checkout Page is displayed")
         cartPage.getPageTitle().should("have.text", this.cartDetails.cartPageText)
-        cy.log("Checking two items added in the cart")
+        cy.log("verifying two items added in the cart")
         cartPage.listOfProductsAdded().should("have.text", this.cartDetails.listOfProductsAdded)
         cy.log("Clicking on checkout")
         cartPage.checkout()
-        cy.log("Checking CheckoutOverview Page is displayed")
+        cy.log("verifying CheckoutOverview Page is displayed")
         checkOutPage.getPageTitle().should("have.text", this.checkOutDetails.checkOutPageText)
         cy.log("Entering Firstname")
         checkOutPage.firstName().type(this.checkOutDetails.firstName)
@@ -82,10 +75,10 @@ describe('My SwagLab Test', function () {
         checkOutPage.postalCode().type(this.checkOutDetails.postalCode)
         cy.log("Clicking on continue")
         checkOutPage.continue()
-        cy.log("Checking checkout overview page is displayed")
+        cy.log("verifying checkout overview page is displayed")
         checkOutOverviewPage.getPageTitle().should("have.text", this.checkOutOverviewDetails.checkOutOverviewPageText)
 
-        cy.log("Checking cart item's quantity")
+        cy.log("verifying cart item's quantity")
         checkOutOverviewPage.cartItemQuantity().each(($product, productIndex, $productListist) => {
             if (productIndex == 0) {
                 const quantityOfFirstItem = $product.text()
@@ -96,7 +89,7 @@ describe('My SwagLab Test', function () {
                 expect(quantityOfSecondItem).to.be.equal(this.checkOutOverviewDetails.cartItemQuantity2)
             }
         })
-        cy.log("Checking cart item's price")
+        cy.log("verifying cart item's price")
         checkOutOverviewPage.cartItemPrice().each(($product, productIndex, $productList) => {
             if (productIndex == 0) {
                 priceOfFirstItem = $product.text()
@@ -117,7 +110,7 @@ describe('My SwagLab Test', function () {
         })
         cy.log("Clicking on finish")
         checkOutOverviewPage.finish()
-        cy.log("Checking checkout complete page is displayed")
+        cy.log("verifying checkout complete page is displayed")
         checkOutCompletePage.getPageTitle().should("have.text", this.checkOutCompleteDetails.checkOutCompletePageText)
     })
 

@@ -4,15 +4,8 @@ import ProductPage from "../../PageFiles/ProductPage"
 const loginPage = new LoginPage()
 const productPage = new ProductPage()
 
-describe('My SwagLab Test Suite', function () {
+describe('Verify Login Test', function () {
   beforeEach(function () {
-    cy.on("fail", (e, runnable) => {
-      if (
-          e.message.includes("A fixture file could not be found")) {
-          cy.log("Please check your file path or input file");
-          throw e;
-      }
-  })
     cy.fixture('login').then(function (loginDetails) {
       this.loginDetails = loginDetails
     })
@@ -26,11 +19,11 @@ describe('My SwagLab Test Suite', function () {
     cy.launchApplication()
   })
 
-  it('Verify Saucedemo.com login is successful', function () {
+  it('Verify login', function () {
 
     cy.log("Logging in to Sauce demo.")
     loginPage.login(this.loginDetails.username, this.loginDetails.password)
-    cy.log("Checking Login is success")
+    cy.log("verifying Login is success")
     productPage.getPageTitle().should("have.text", this.productDetails.productPageText)
   })
 
